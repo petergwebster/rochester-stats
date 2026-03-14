@@ -404,7 +404,7 @@ input[type=range]{accent-color:var(--gold);width:120px;}
       </select>
     </div>
     <div class="tw"><table class="st" id="roster-tbl">
-      <thead><tr><th>#</th><th>Name</th><th>Pos</th><th>Yr</th><th>B/T</th><th>Ht</th><th>Hometown</th><th>High School / Prev</th></tr></thead>
+      <thead><tr><th>#</th><th>Name</th><th>Pos</th><th>Yr</th><th>B/T</th><th>Ht</th><th>Wt</th><th>Hometown</th><th>High School</th></tr></thead>
       <tbody></tbody>
     </table></div>
     <div style="padding:10px 14px;border-top:1px solid rgba(245,200,66,0.1);">
@@ -466,7 +466,7 @@ var ROC_H=[
   {name:"Logan Mathias",avg:.273,gp:"4-4",ab:11,r:1,h:3,d:0,t:0,hr:0,rbi:3,tb:3,slg:.273,bb:3,hbp:1,so:2,gdp:0,obp:.467,sf:0,sh:0,sb:"0-0",po:20,a:5,e:0,fld:1.000},
   {name:"Luke Blozy",avg:.238,gp:"6-6",ab:21,r:1,h:5,d:2,t:0,hr:0,rbi:7,tb:7,slg:.333,bb:1,hbp:0,so:8,gdp:1,obp:.273,sf:0,sh:0,sb:"0-0",po:33,a:4,e:0,fld:1.000},
   {name:"Jake Goldberg",avg:.167,gp:"7-1",ab:6,r:2,h:1,d:0,t:0,hr:0,rbi:1,tb:1,slg:.167,bb:0,hbp:0,so:1,gdp:0,obp:.167,sf:0,sh:0,sb:"0-0",po:1,a:0,e:0,fld:1.000},
-  {name:"N. Carpenter-Holmes",avg:.167,gp:"3-2",ab:6,r:0,h:1,d:1,t:0,hr:0,rbi:2,tb:2,slg:.333,bb:0,hbp:0,so:3,gdp:0,obp:.167,sf:0,sh:1,sb:"0-0",po:2,a:2,e:1,fld:.800},
+  {name:"Nathan Carpenter-Holmes",avg:.167,gp:"3-2",ab:6,r:0,h:1,d:1,t:0,hr:0,rbi:2,tb:2,slg:.333,bb:0,hbp:0,so:3,gdp:0,obp:.167,sf:0,sh:1,sb:"0-0",po:2,a:2,e:1,fld:.800},
   {name:"Declan Jack",avg:.000,gp:"1-1",ab:2,r:0,h:0,d:0,t:0,hr:0,rbi:0,tb:0,slg:.000,bb:0,hbp:0,so:0,gdp:1,obp:.000,sf:0,sh:0,sb:"0-0",po:0,a:0,e:0,fld:.000},
   {name:"Grady Davis",avg:.000,gp:"1-0",ab:1,r:0,h:0,d:0,t:0,hr:0,rbi:0,tb:0,slg:.000,bb:0,hbp:0,so:0,gdp:0,obp:.000,sf:0,sh:0,sb:"0-0",po:0,a:1,e:1,fld:.500},
   {name:"Daniel Gudin",avg:.000,gp:"1-0",ab:0,r:0,h:0,d:0,t:0,hr:0,rbi:0,tb:0,slg:.000,bb:0,hbp:1,so:0,gdp:0,obp:1.000,sf:0,sh:0,sb:"0-0",po:0,a:0,e:0,fld:.000}
@@ -932,39 +932,39 @@ var SCHEDULE=[
 ];
 
 var ROSTER=[
-  {num:1,name:"Teddy Monahan",pos:"OF",yr:"Jr",bt:"L/L",ht:"5-11",town:"Orchard Park, NY",school:"Orchard Park HS"},
-  {num:2,name:"Sam Loeb",pos:"P",yr:"Sr",bt:"R/R",ht:"6-2",town:"Scarsdale, NY",school:"Scarsdale HS"},
-  {num:4,name:"Benjamin Garber",pos:"OF",yr:"So",bt:"L/L",ht:"5-10",town:"Westfield, NJ",school:"Westfield HS"},
-  {num:5,name:"Logan Mathias",pos:"C",yr:"Jr",bt:"R/R",ht:"6-0",town:"Orland Park, IL",school:"Carl Sandburg HS"},
-  {num:6,name:"Aidan Watts",pos:"P",yr:"Fr",bt:"R/R",ht:"6-3",town:"",school:""},
-  {num:7,name:"Sunil Lindsay",pos:"P",yr:"Jr",bt:"R/R",ht:"6-1",town:"",school:""},
-  {num:8,name:"Daniel Gudin",pos:"P",yr:"Fr",bt:"L/L",ht:"6-0",town:"",school:""},
-  {num:9,name:"Jake Del Vecchio",pos:"P",yr:"So",bt:"R/R",ht:"6-0",town:"",school:""},
-  {num:10,name:"Zach Herzog",pos:"P",yr:"Sr",bt:"R/R",ht:"6-2",town:"Woodbridge, CT",school:"Amity Regional HS"},
-  {num:11,name:"Jake Goldberg",pos:"OF",yr:"Jr",bt:"R/R",ht:"5-11",town:"",school:""},
-  {num:12,name:"Carlos Barajas",pos:"2B",yr:"Sr",bt:"R/R",ht:"5-9",town:"Nutley, NJ",school:"Nutley HS"},
-  {num:13,name:"Sammy Besztery",pos:"SS",yr:"Jr",bt:"R/R",ht:"6-0",town:"Westfield, NJ",school:"Westfield HS"},
-  {num:14,name:"Luke Blozy",pos:"C",yr:"So",bt:"R/R",ht:"6-1",town:"",school:""},
-  {num:15,name:"Derek Llanes",pos:"P",yr:"Jr",bt:"R/R",ht:"6-3",town:"",school:""},
-  {num:16,name:"K. Carpenter-Holmes",pos:"P",yr:"Fr",bt:"L/L",ht:"6-1",town:"",school:""},
-  {num:17,name:"Ryan Arora",pos:"P",yr:"Jr",bt:"R/R",ht:"6-0",town:"",school:""},
-  {num:18,name:"Will Webster",pos:"3B",yr:"So",bt:"R/R",ht:"6-0",town:"Dover Plains, NY",school:"Dover HS"},
-  {num:19,name:"Grady Davis",pos:"OF",yr:"Fr",bt:"R/R",ht:"6-1",town:"",school:""},
-  {num:21,name:"Ryan Huckabone",pos:"SS",yr:"Jr",bt:"R/R",ht:"5-11",town:"Albany, NY",school:"Bethlehem HS"},
-  {num:22,name:"Ryan Balent",pos:"P",yr:"So",bt:"R/R",ht:"6-2",town:"",school:""},
-  {num:23,name:"Andrew Lenhard",pos:"P",yr:"Sr",bt:"R/R",ht:"6-3",town:"",school:""},
-  {num:24,name:"Brendan Ryan",pos:"P",yr:"Jr",bt:"R/R",ht:"6-2",town:"",school:""},
-  {num:25,name:"Randy Davis",pos:"1B",yr:"Fr",bt:"R/R",ht:"6-3",town:"",school:""},
-  {num:26,name:"Owen Andreatta",pos:"OF",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""},
-  {num:27,name:"Jake Bentivenga",pos:"1B",yr:"Sr",bt:"L/L",ht:"6-1",town:"Bethpage, NY",school:"Bethpage HS"},
-  {num:28,name:"N. Carpenter-Holmes",pos:"UT",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""},
-  {num:30,name:"Christopher Trucano",pos:"P",yr:"So",bt:"R/R",ht:"6-1",town:"",school:""},
-  {num:31,name:"Spencer Guido",pos:"P",yr:"Jr",bt:"R/R",ht:"6-2",town:"",school:""},
-  {num:32,name:"Tristan Datta",pos:"OF",yr:"So",bt:"R/R",ht:"5-10",town:"",school:""},
-  {num:33,name:"James Nelson",pos:"P",yr:"So",bt:"R/R",ht:"6-3",town:"",school:""},
-  {num:34,name:"Theo Beckley",pos:"P",yr:"Fr",bt:"R/R",ht:"6-2",town:"",school:""},
-  {num:44,name:"George Farley IV",pos:"OF",yr:"Jr",bt:"R/R",ht:"6-1",town:"Hopkinton, MA",school:"Hopkinton HS"},
-  {num:45,name:"Declan Jack",pos:"C",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""}
+  {num:1, name:"Teddy Monahan",         pos:"OF", yr:"FY", bt:"R/R", ht:"6-0",  wt:175, town:"Wayne, PA",              school:"Radnor"},
+  {num:2, name:"Sam Loeb",              pos:"P",  yr:"FY", bt:"R/R", ht:"5-8",  wt:175, town:"Mandeville, LA",          school:"Archbishop Hannan"},
+  {num:4, name:"Benjamin Garber",       pos:"OF", yr:"SO", bt:"R/R", ht:"6-1",  wt:195, town:"Las Vegas, NV",           school:"The Meadows School"},
+  {num:5, name:"Logan Mathias",         pos:"C",  yr:"FY", bt:"R/R", ht:"6-0",  wt:190, town:"San Carlos, CA",          school:"Sequoia"},
+  {num:6, name:"Aidan Watts",           pos:"P",  yr:"SO", bt:"R/R", ht:"6-4",  wt:200, town:"Bethesda, MD",            school:"Walter Johnson"},
+  {num:7, name:"Sunil Lindsay",         pos:"P",  yr:"SO", bt:"R/R", ht:"6-4",  wt:195, town:"Raleigh, NC",             school:"Cary Academy"},
+  {num:8, name:"Daniel Gudin",          pos:"C",  yr:"FY", bt:"R/R", ht:"6-1",  wt:185, town:"Bolton, MA",              school:"Nashoba Regional"},
+  {num:9, name:"Jake Del Vecchio",      pos:"P",  yr:"SO", bt:"R/R", ht:"6-3",  wt:200, town:"Fort Lauderdale, FL",     school:"Pine Crest"},
+  {num:10,name:"Zach Herzog",           pos:"P",  yr:"JR", bt:"R/R", ht:"5-10", wt:175, town:"Rixeyville, VA",          school:"Woodberry Forest"},
+  {num:11,name:"Jake Goldberg",         pos:"OF", yr:"SO", bt:"R/R", ht:"5-11", wt:165, town:"Bethesda, MD",            school:"Walter Johnson"},
+  {num:12,name:"Carlos Barajas",        pos:"IF", yr:"FY", bt:"S/R", ht:"5-7",  wt:170, town:"Knoxville, TN",           school:"St. John Bosco (CA)"},
+  {num:13,name:"Sammy Besztery",        pos:"IF", yr:"JR", bt:"R/R", ht:"6-0",  wt:175, town:"Chicago, IL",             school:"Saint Ignatius Prep"},
+  {num:14,name:"Luke Blozy",            pos:"C",  yr:"JR", bt:"R/R", ht:"5-10", wt:200, town:"Brooklyn, NY",            school:"Midwood"},
+  {num:15,name:"Derek Llanes",          pos:"P",  yr:"JR", bt:"R/R", ht:"5-10", wt:180, town:"Evanston, IL",            school:"Evanston Township"},
+  {num:16,name:"Kevin Carpenter-Holmes",pos:"P",  yr:"FY", bt:"R/R", ht:"6-4",  wt:200, town:"Alexandria, VA",          school:"Sidwell Friends"},
+  {num:17,name:"Ryan Arora",            pos:"P",  yr:"SO", bt:"R/R", ht:"6-4",  wt:200, town:"Mississauga, Ontario",    school:"Lorne Park Secondary"},
+  {num:18,name:"Will Webster",          pos:"IF", yr:"FY", bt:"L/L", ht:"6-0",  wt:195, town:"Boston, MA",              school:"Wellesley"},
+  {num:19,name:"Grady Davis",           pos:"IF", yr:"FY", bt:"R/R", ht:"5-11", wt:185, town:"Fairview Heights, IL",    school:"Belleville East"},
+  {num:21,name:"Ryan Huckabone",        pos:"IF", yr:"FY", bt:"R/R", ht:"5-11", wt:200, town:"Newton, MA",              school:"Newton North"},
+  {num:22,name:"Ryan Balent",           pos:"P",  yr:"FY", bt:"R/R", ht:"5-10", wt:170, town:"South Plainfield, NJ",    school:"South Plainfield"},
+  {num:23,name:"Andrew Lenhard",        pos:"P",  yr:"SO", bt:"R/L", ht:"6-1",  wt:195, town:"Rochester, NY",           school:"Hilton"},
+  {num:24,name:"Brendan Ryan",          pos:"P",  yr:"SO", bt:"L/L", ht:"6-4",  wt:210, town:"Sammamish, WA",           school:"Skyline"},
+  {num:25,name:"Randy Davis",           pos:"IF", yr:"SO", bt:"R/R", ht:"5-11", wt:185, town:"Westfield, NJ",           school:"Westfield"},
+  {num:26,name:"Owen Andreatta",        pos:"OF", yr:"FY", bt:"R/R", ht:"5-10", wt:190, town:"Fairport, NY",            school:"Fairport"},
+  {num:27,name:"Jake Bentivenga",       pos:"C",  yr:"FY", bt:"R/R", ht:"6-0",  wt:195, town:"Wilmette, IL",            school:"New Trier"},
+  {num:28,name:"Nathan Carpenter-Holmes",pos:"IF",yr:"JR", bt:"R/R", ht:"5-11", wt:190, town:"Alexandria, VA",          school:"Sidwell Friends"},
+  {num:30,name:"Christopher Trucano",   pos:"P",  yr:"FY", bt:"L/L", ht:"6-0",  wt:200, town:"New York, NY",            school:"Lawrenceville School (NJ)"},
+  {num:31,name:"Spencer Guido",         pos:"P",  yr:"FY", bt:"R/R", ht:"5-10", wt:175, town:"San Francisco, CA",       school:"St. Ignatius College Prep"},
+  {num:32,name:"Tristan Datta",         pos:"OF", yr:"SO", bt:"R/R", ht:"6-7",  wt:205, town:"Davidson, NC",            school:"Cannon School"},
+  {num:33,name:"James Nelson",          pos:"P",  yr:"FY", bt:"R/R", ht:"6-5",  wt:180, town:"Las Vegas, NV",           school:"The Meadows School"},
+  {num:34,name:"Theo Beckley",          pos:"P",  yr:"SO", bt:"R/R", ht:"6-3",  wt:175, town:"Evergreen, CO",           school:"Evergreen"},
+  {num:44,name:"George Farley IV",      pos:"OF", yr:"FY", bt:"R/R", ht:"6-2",  wt:175, town:"Austin, TX",              school:"Vandegrift"},
+  {num:45,name:"Declan Jack",           pos:"IF", yr:"FY", bt:"R/R", ht:"6-3",  wt:220, town:"Apex, NC",                school:"Cary Academy"}
 ];
 
 function initSchedule(){
@@ -1026,6 +1026,7 @@ function initRosterPage(){
         +'<td>'+p.yr+'</td>'
         +'<td style="color:var(--tm)">'+p.bt+'</td>'
         +'<td style="color:var(--tm)">'+p.ht+'</td>'
+        +'<td style="color:var(--tm)">'+p.wt+' lbs</td>'
         +'<td>'+p.town+'</td>'
         +'<td style="color:var(--tm)">'+p.school+'</td>'
       +'</tr>';
