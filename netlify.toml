@@ -4,7 +4,7 @@
 
 [[scheduled-functions]]
   name = "scraper"
-  schedule = "0 */6 * * *"
+  schedule = "0 * * * *"
 
 [[headers]]
   for = "/*"
