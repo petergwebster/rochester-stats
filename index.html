@@ -254,6 +254,9 @@ input[type=range]{accent-color:var(--gold);width:120px;}
     <button class="nt" data-page="coach">Coach's Packet</button>
   </div>
 </nav>
+<div style="background:var(--nm);border-bottom:1px solid rgba(245,200,66,0.08);padding:5px 14px;text-align:right;">
+  <span id="last-updated" style="font-family:Oswald,sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);">Loading live data...</span>
+</div>
 <div class="wrap">
 
 <!-- DASHBOARD -->
@@ -451,7 +454,44 @@ input[type=range]{accent-color:var(--gold);width:120px;}
 </div><!-- /wrap -->
 
 <script>
-var ROC_H=[
+var ROC_H=[], ROC_P=[], LL_T=[], LL_H=[], LL_P=[], ROC_INN={roc:[],opp:[]};
+var DATA_LOADED=false;
+var LAST_UPDATED="";
+
+async function loadLiveData(){
+  var stamp=document.getElementById("last-updated");
+  try {
+    var res=await fetch("/.netlify/functions/get-stats");
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    var d=await res.json();
+    if(d.error) throw new Error(d.error);
+
+    LAST_UPDATED=d.lastUpdated?new Date(d.lastUpdated).toLocaleString():"unknown";
+    if(stamp) stamp.textContent="Live data · Updated: "+LAST_UPDATED;
+
+    if(d.roc){
+      ROC_H=d.roc.hitters||[];
+      ROC_P=d.roc.pitchers||[];
+      ROC_INN=d.roc.innings||{roc:[],opp:[]};
+    }
+    if(d.ll){
+      LL_T=d.ll.teams||[];
+      LL_H=d.ll.hitters||[];
+      LL_P=d.ll.pitchers||[];
+    }
+    DATA_LOADED=true;
+    document.querySelectorAll(".loading-overlay").forEach(function(el){el.remove();});
+    initDash(); initBatting(); initPitching(); initGameLog(); initConference();
+    renderLeaders("avg"); initCards(); initCoach();
+  } catch(err){
+    console.warn("Live fetch failed, using fallback data:", err.message);
+    if(stamp) stamp.textContent="Using cached data · Live update unavailable";
+    useFallback();
+  }
+}
+
+function useFallback(){
+  ROC_H=[
   {name:"Ryan Huckabone",avg:.474,gp:"7-6",ab:19,r:5,h:9,d:1,t:0,hr:0,rbi:7,tb:10,slg:.526,bb:1,hbp:2,so:5,gdp:0,obp:.545,sf:0,sh:1,sb:"0-1",po:3,a:7,e:7,fld:.588},
   {name:"Tristan Datta",avg:.400,gp:"4-2",ab:5,r:2,h:2,d:1,t:0,hr:0,rbi:2,tb:3,slg:.600,bb:2,hbp:2,so:2,gdp:0,obp:.667,sf:0,sh:1,sb:"0-1",po:2,a:0,e:0,fld:1.000},
   {name:"Owen Andreatta",avg:.375,gp:"4-3",ab:8,r:2,h:3,d:1,t:0,hr:0,rbi:0,tb:4,slg:.500,bb:0,hbp:0,so:2,gdp:1,obp:.375,sf:0,sh:0,sb:"0-0",po:0,a:0,e:1,fld:.000},
@@ -471,7 +511,7 @@ var ROC_H=[
   {name:"Grady Davis",avg:.000,gp:"1-0",ab:1,r:0,h:0,d:0,t:0,hr:0,rbi:0,tb:0,slg:.000,bb:0,hbp:0,so:0,gdp:0,obp:.000,sf:0,sh:0,sb:"0-0",po:0,a:1,e:1,fld:.500},
   {name:"Daniel Gudin",avg:.000,gp:"1-0",ab:0,r:0,h:0,d:0,t:0,hr:0,rbi:0,tb:0,slg:.000,bb:0,hbp:1,so:0,gdp:0,obp:1.000,sf:0,sh:0,sb:"0-0",po:0,a:0,e:0,fld:.000}
 ];
-var ROC_P=[
+  ROC_P=[
   {name:"Jake Del Vecchio",era:0.00,wl:"0-0",app:5,gs:0,sv:2,ip:5.1,h:1,r:0,er:0,bb:1,so:4,hr:0,bavg:.056,wp:0,hbp:1,bk:0},
   {name:"Ryan Balent",era:0.00,wl:"0-0",app:1,gs:0,sv:0,ip:1.0,h:0,r:0,er:0,bb:1,so:0,hr:0,bavg:.000,wp:0,hbp:0,bk:0},
   {name:"James Nelson",era:1.00,wl:"1-0",app:2,gs:1,sv:0,ip:9.0,h:7,r:2,er:1,bb:1,so:6,hr:0,bavg:.226,wp:0,hbp:0,bk:0},
@@ -486,7 +526,7 @@ var ROC_P=[
   {name:"Derek Llanes",era:16.88,wl:"0-1",app:2,gs:0,sv:0,ip:5.1,h:15,r:10,er:10,bb:1,so:6,hr:2,bavg:.517,wp:0,hbp:1,bk:0},
   {name:"Aidan Watts",era:45.00,wl:"0-0",app:1,gs:0,sv:0,ip:1.0,h:4,r:5,er:5,bb:0,so:1,hr:0,bavg:.667,wp:3,hbp:2,bk:0}
 ];
-var LL_T=[
+  LL_T=[
   {team:"Ithaca",avg:.365,g:6,ab:219,r:77,h:80,d:10,t:3,hr:9,rbi:71,tb:123,slg:.562,bb:37,so:50,obp:.469,sb:"23-27",fld:.922,era:7.26,wl:"4-2"},
   {team:"Skidmore",avg:.336,g:10,ab:318,r:86,h:107,d:24,t:5,hr:9,rbi:74,tb:168,slg:.528,bb:39,so:50,obp:.422,sb:"29-34",fld:.958,era:5.45,wl:"8-2"},
   {team:"Bard",avg:.331,g:5,ab:142,r:31,h:47,d:7,t:0,hr:1,rbi:30,tb:57,slg:.401,bb:15,so:33,obp:.420,sb:"6-11",fld:.942,era:12.32,wl:"2-3"},
@@ -499,7 +539,7 @@ var LL_T=[
   {team:"RPI",avg:.255,g:8,ab:267,r:49,h:68,d:12,t:1,hr:5,rbi:38,tb:97,slg:.363,bb:31,so:64,obp:.357,sb:"10-16",fld:.942,era:5.82,wl:"3-5"},
   {team:"Vassar",avg:.234,g:7,ab:197,r:33,h:46,d:6,t:4,hr:2,rbi:29,tb:66,slg:.335,bb:26,so:70,obp:.369,sb:"5-7",fld:.920,era:7.92,wl:"1-6"}
 ];
-var LL_H=[
+  LL_H=[
   {name:"Zach Rider",team:"Clarkson",avg:.571,ops:1.714,gp:"6-2",ab:7,r:3,h:4,d:1,t:0,hr:1,rbi:2,slg:1.143,bb:0,hbp:0,so:2,obp:.571,sb:"0-0"},
   {name:"Beau Vardion",team:"Clarkson",avg:.520,ops:1.272,gp:"8-8",ab:25,r:3,h:13,d:5,t:0,hr:0,rbi:7,slg:.720,bb:1,hbp:2,so:4,obp:.552,sb:"0-0"},
   {name:"Ethan Fantel",team:"Ithaca",avg:.520,ops:1.345,gp:"6-6",ab:25,r:7,h:13,d:2,t:0,hr:1,rbi:10,slg:.720,bb:6,hbp:1,so:4,obp:.625,sb:"0-0"},
@@ -524,7 +564,7 @@ var LL_H=[
   {name:"Will Webster",team:"Rochester",avg:.348,ops:.791,gp:"7-6",ab:23,r:6,h:8,d:1,t:0,hr:0,rbi:6,slg:.391,bb:1,hbp:1,so:7,obp:.400,sb:"1-2"},
   {name:"Jack Finnegan",team:"St. Lawrence",avg:.462,ops:1.198,gp:"7-4",ab:13,r:2,h:6,d:0,t:2,hr:0,rbi:4,slg:.769,bb:0,hbp:0,so:1,obp:.429,sb:"0-0"}
 ];
-var LL_P=[
+  LL_P=[
   {name:"Cj Kanick",team:"Clarkson",era:0.00,w:1,l:0,gs:1,sv:1,ip:8.0,h:2,r:0,er:0,bb:1,so:13,hr:0,bavg:.080},
   {name:"Jacob Skarlis",team:"Union",era:0.00,w:1,l:0,gs:2,sv:0,ip:9.0,h:5,r:0,er:0,bb:3,so:8,hr:0,bavg:.167},
   {name:"Addison Lee",team:"Vassar",era:1.29,w:0,l:1,gs:2,sv:0,ip:7.0,h:4,r:2,er:1,bb:5,so:12,hr:0,bavg:.167},
@@ -542,7 +582,13 @@ var LL_P=[
   {name:"Cole Tarrant",team:"Hobart",era:6.39,w:1,l:1,gs:3,sv:0,ip:12.2,h:14,r:12,er:9,bb:5,so:11,hr:1,bavg:.286},
   {name:"Quinn Hocom",team:"Skidmore",era:8.18,w:2,l:0,gs:2,sv:0,ip:11.0,h:12,r:10,er:10,bb:3,so:22,hr:1,bavg:.273}
 ];
-var ROC_INN={roc:[8,9,9,15,12,9,1,10,0],opp:[8,7,7,3,11,11,5,5,6]};
+  ROC_INN={roc:[8,9,9,15,12,9,1,10,0],opp:[8,7,7,3,11,11,5,5,6]};
+
+  DATA_LOADED=true;
+  initDash(); initBatting(); initPitching(); initGameLog(); initConference();
+  renderLeaders("avg"); initCards(); initCoach();
+}
+
 
 function fa(n){if(isNaN(n)||n===null||n===undefined)return "--";var s=n.toFixed(3);return s.replace(/^0\./,".");}
 function fe(n){if(isNaN(n)||n===null)return "--";return n.toFixed(2);}
@@ -1056,7 +1102,8 @@ document.getElementById("ticker-text").textContent=["ROC 7-3 OVERALL &middot; .3
 
 /* ══ INIT ══ */
 document.addEventListener("DOMContentLoaded",function(){
-  initDash();initSchedule();initRosterPage();initBatting();initPitching();initGameLog();initConference();renderLeaders("avg");initCards();initCoach();
+  initSchedule(); initRosterPage();
+  loadLiveData();
 });
 </script>
 </body>
