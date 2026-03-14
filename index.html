@@ -467,7 +467,7 @@ async function loadLiveData(){
     if(d.error) throw new Error(d.error);
 
     LAST_UPDATED=d.lastUpdated?new Date(d.lastUpdated).toLocaleString():"unknown";
-    if(stamp) stamp.textContent="Live data · Updated: "+LAST_UPDATED;
+    if(stamp) stamp.textContent="Live data · Updated: "+LAST_UPDATED;stamp.style.color="var(--green)";
 
     if(d.roc){
       ROC_H=d.roc.hitters||[];
@@ -485,7 +485,7 @@ async function loadLiveData(){
     renderLeaders("avg"); initCards(); initCoach();
   } catch(err){
     console.warn("Live fetch failed, using fallback data:", err.message);
-    if(stamp) stamp.textContent="Using cached data · Live update unavailable";
+    if(stamp){stamp.textContent="Using cached data · Live update unavailable";stamp.style.color="var(--red)";}
     useFallback();
   }
 }
