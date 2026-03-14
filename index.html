@@ -51,7 +51,9 @@ nav{background:var(--navy);border-bottom:1px solid rgba(245,200,66,0.12);}
 .hi{color:var(--gold);font-weight:700;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-@media(max-width:860px){.g2,.g3{grid-template-columns:1fr;}}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
 .sec{margin-bottom:18px;}
 .ig{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;background:rgba(245,200,66,0.08);margin:14px;}
 .ic{background:var(--cbg);padding:9px 3px;text-align:center;}
@@ -87,11 +89,10 @@ nav{background:var(--navy);border-bottom:1px solid rgba(245,200,66,0.12);}
 .si:focus{border-color:var(--gold);}
 .si::placeholder{color:var(--tm);}
 select.si{cursor:pointer;}
-/* CARDS PAGE */
+/* CARDS */
 .ctb{padding:12px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-bottom:1px solid rgba(245,200,66,0.08);}
 .ctb label{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);white-space:nowrap;}
 .num-in{background:var(--nm);border:1px solid rgba(245,200,66,0.18);color:var(--tp);font-family:'Oswald',sans-serif;font-size:13px;padding:5px 9px;border-radius:2px;outline:none;width:70px;}
-.num-in:focus{border-color:var(--gold);}
 input[type=range]{accent-color:var(--gold);width:120px;}
 .cards-layout{display:grid;grid-template-columns:1fr 320px;gap:14px;align-items:start;padding:14px;}
 @media(max-width:900px){.cards-layout{grid-template-columns:1fr;}}
@@ -100,7 +101,9 @@ input[type=range]{accent-color:var(--gold);width:120px;}
 .pcard:hover{transform:translateY(-2px);border-color:rgba(245,200,66,0.5);}
 .pcard.active-card{border-color:var(--gold);border-top-color:var(--gold);}
 .pcard.pinned-card{border-top-color:var(--gold);}
+.pcard.william-card{border-top-color:#F5C842;border:2px solid rgba(245,200,66,0.5);}
 .pin-badge{position:absolute;top:8px;right:8px;background:var(--gold);color:var(--navy);font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;letter-spacing:1px;}
+.william-badge{position:absolute;top:8px;right:8px;background:var(--gold);color:var(--navy);font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;padding:1px 5px;border-radius:2px;letter-spacing:1px;}
 .pc-name{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:var(--tp);line-height:1.2;margin-bottom:3px;}
 .pc-meta{font-size:10px;color:var(--tm);letter-spacing:.5px;margin-bottom:10px;}
 .pc-big{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-bottom:10px;}
@@ -155,6 +158,71 @@ input[type=range]{accent-color:var(--gold);width:120px;}
 .exp-btn{font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;background:transparent;border:1px solid rgba(245,200,66,0.3);color:var(--gold);padding:5px 12px;border-radius:2px;cursor:pointer;}
 .clr-btn{font-family:'Oswald',sans-serif;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--tm);padding:5px 12px;border-radius:2px;cursor:pointer;}
 .ctag{font-size:10px;color:var(--tm);margin-left:auto;}
+/* DASHBOARD */
+.dash-hero{background:linear-gradient(135deg,var(--nm) 0%,var(--nl) 100%);border:1px solid var(--cb);border-radius:3px;padding:24px;margin-bottom:18px;position:relative;overflow:hidden;}
+.dash-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(245,200,66,0.04);pointer-events:none;}
+.dash-hero-title{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.dash-hero-stat{font-family:'Oswald',sans-serif;font-size:48px;font-weight:700;color:var(--tp);line-height:1;}
+.dash-hero-sub{font-size:13px;color:var(--tm);margin-top:4px;}
+.rank-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gp);border:1px solid rgba(245,200,66,0.25);border-radius:3px;padding:6px 12px;margin:3px;}
+.rank-badge .rbn{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--gold);}
+.rank-badge .rbl{font-size:10px;color:var(--tm);letter-spacing:1px;text-transform:uppercase;}
+.hot-card{background:var(--nm);border:1px solid var(--cb);border-radius:3px;padding:12px;position:relative;}
+.hot-card .hc-name{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;color:var(--tp);}
+.hot-card .hc-stat{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--gold);line-height:1;}
+.hot-card .hc-lbl{font-size:9px;color:var(--tm);letter-spacing:1.5px;text-transform:uppercase;}
+.hot-card .hc-fire{position:absolute;top:8px;right:10px;font-size:18px;}
+.trend-up{color:var(--green);}
+.trend-dn{color:var(--red);}
+.highlight-banner{background:var(--gold);color:var(--navy);border-radius:3px;padding:14px 16px;margin-bottom:8px;}
+.highlight-banner .hb-label{font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:2px;}
+.highlight-banner .hb-text{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;}
+.vs-bar-wrap{padding:14px;}
+.vs-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.vs-lbl{font-size:10px;color:var(--tm);width:60px;letter-spacing:.5px;text-transform:uppercase;}
+.vs-track{flex:1;height:20px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden;position:relative;}
+.vs-roc{height:100%;background:var(--gold);border-radius:2px 0 0 2px;display:flex;align-items:center;padding-left:6px;}
+.vs-roc-val{font-family:'Oswald',sans-serif;font-size:10px;font-weight:700;color:var(--navy);}
+.vs-league-marker{position:absolute;top:0;height:100%;width:2px;background:rgba(255,255,255,0.3);}
+.vs-val{font-family:'Oswald',sans-serif;font-size:11px;color:var(--tm);width:40px;text-align:right;}
+/* WILLIAM FEATURE */
+.william-hero{background:var(--nm);border:2px solid var(--gold);border-radius:3px;padding:20px;margin-bottom:18px;}
+.wh-top{display:flex;align-items:center;gap:20px;margin-bottom:16px;flex-wrap:wrap;}
+.wh-number{font-family:'Oswald',sans-serif;font-size:72px;font-weight:700;color:var(--gold);line-height:1;opacity:.15;position:absolute;}
+.wh-info{flex:1;}
+.wh-name{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--tp);line-height:1;}
+.wh-sub{font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+.wh-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:1px;background:rgba(245,200,66,0.08);}
+.wh-stat{background:var(--cbg);padding:10px;text-align:center;}
+.wh-stat .wv{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--gold);}
+.wh-stat .wl{font-size:8px;color:var(--tm);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+/* COACH PACKET */
+.scout-hero{background:var(--nm);border:1px solid var(--cb);border-radius:3px;padding:16px;margin-bottom:14px;}
+.scout-select{background:var(--nm);border:2px solid var(--gold);color:var(--tp);font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;padding:10px 16px;border-radius:3px;outline:none;cursor:pointer;width:100%;}
+.scout-select option{background:var(--nm);}
+.print-btn{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;padding:10px 20px;border-radius:2px;cursor:pointer;transition:all .15s;}
+.print-btn:hover{background:var(--gold-dark);}
+.dl-btn{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:transparent;color:var(--gold);border:1px solid var(--gold);padding:10px 20px;border-radius:2px;cursor:pointer;transition:all .15s;}
+.dl-btn:hover{background:var(--gp);}
+.scout-section-title{font-family:'Oswald',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding:10px 14px;background:var(--nl);border-bottom:1px solid rgba(245,200,66,0.15);}
+.threat-card{background:var(--nm);border:1px solid var(--cb);border-radius:3px;padding:12px;}
+.threat-rank{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;color:rgba(245,200,66,0.15);line-height:1;}
+.threat-name{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;color:var(--tp);margin-top:-8px;}
+.threat-stat{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;color:var(--gold);}
+.threat-lbl{font-size:8px;color:var(--tm);letter-spacing:1.5px;text-transform:uppercase;}
+@media print{
+  .ticker,nav,.no-print{display:none!important;}
+  header{position:relative;}
+  body{background:white!important;color:black!important;}
+  .card,.scout-hero{border:1px solid #ccc!important;background:white!important;}
+  .ct,.scout-section-title{color:#1A2E54!important;background:#f0f0f0!important;}
+  .hi,.threat-stat,.wh-stat .wv,.sc .sv{color:#C9A227!important;}
+  .st td,.st th{color:black!important;border-color:#ccc!important;}
+  .st th{background:#f0f0f0!important;}
+  .pg{display:block!important;}
+  .pg:not(#page-coach){display:none!important;}
+  #page-coach{display:block!important;}
+}
 </style>
 </head>
 <body>
@@ -162,7 +230,7 @@ input[type=range]{accent-color:var(--gold);width:120px;}
 <header>
   <div class="hdr">
     <div class="logo-blk"><div class="abbr">UR</div><div class="lsub">Baseball</div></div>
-    <div class="hdr-title"><h1>Rochester Yellowjackets</h1><div class="tsub">Liberty League · 2026 Season</div></div>
+    <div class="hdr-title"><h1>Rochester Yellowjackets</h1><div class="tsub">Liberty League &middot; 2026 Season</div></div>
     <div class="hdr-stats">
       <div class="hs"><div class="v">7-3</div><div class="l">Record</div></div>
       <div class="hdiv"></div>
@@ -174,27 +242,57 @@ input[type=range]{accent-color:var(--gold);width:120px;}
 </header>
 <nav>
   <div class="nav-inner">
-    <button class="nt on" data-page="overview">Overview</button>
+    <button class="nt on" data-page="dash">Dashboard</button>
     <button class="nt" data-page="cards">Player Cards</button>
-    <button class="nt" data-page="roster">Batting</button>
+    <button class="nt" data-page="batting">Batting</button>
     <button class="nt" data-page="pitching">Pitching</button>
     <button class="nt" data-page="gamelog">Game Log</button>
     <button class="nt" data-page="conference">Liberty League</button>
     <button class="nt" data-page="leaders">Leaders</button>
+    <button class="nt" data-page="schedule">Schedule</button>
+    <button class="nt" data-page="roster-pg">Roster</button>
+    <button class="nt" data-page="coach">Coach's Packet</button>
   </div>
 </nav>
 <div class="wrap">
-<!-- OVERVIEW -->
-<div class="pg on" id="page-overview">
-  <div class="sec"><div class="card"><div class="ch"><span class="ct">Team Stats 2026</span><span class="cbdg">7-3 Rochester</span></div><div class="sg" id="ov-sg"></div></div></div>
-  <div class="g2 sec">
-    <div class="card"><div class="ch"><span class="ct">Inning-by-Inning</span></div><div class="ig" id="inn-grid"></div></div>
-    <div class="card"><div class="ch"><span class="ct">Win-Loss Splits</span></div><div id="splits-list"></div></div>
+
+<!-- DASHBOARD -->
+<div class="pg on" id="page-dash">
+  <div id="highlights-row" class="sec"></div>
+  <div class="g3 sec">
+    <div class="card" style="grid-column:span 1">
+      <div class="ch"><span class="ct">League Rankings</span><span class="cbdg">vs 11 Teams</span></div>
+      <div style="padding:14px;" id="rank-badges"></div>
+    </div>
+    <div class="card" style="grid-column:span 2">
+      <div class="ch"><span class="ct">ROC vs League Average</span></div>
+      <div class="vs-bar-wrap" id="vs-league-bars"></div>
+    </div>
   </div>
-  <div class="sec"><div class="card"><div class="ch"><span class="ct">Top Hitters</span><span class="cbdg">Min 5 AB</span></div>
-    <div class="tw"><table class="st" id="top-tbl"><thead><tr><th>Player</th><th>AVG</th><th>AB</th><th>H</th><th>R</th><th>RBI</th><th>HR</th><th>2B</th><th>3B</th><th>BB</th><th>SB</th><th>OBP</th><th>SLG</th><th>OPS</th></tr></thead><tbody></tbody></table></div>
-  </div></div>
+  <div class="sec">
+    <div class="card">
+      <div class="ch"><span class="ct">Hot Performers</span><span class="cbdg">Top by OPS percentile</span></div>
+      <div class="g4" style="padding:14px;gap:10px;" id="hot-cards"></div>
+    </div>
+  </div>
+  <div class="g2 sec">
+    <div class="card">
+      <div class="ch"><span class="ct">Team Stats</span></div>
+      <div class="sg" id="ov-sg"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ct">Inning-by-Inning</span></div>
+      <div class="ig" id="inn-grid"></div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="card">
+      <div class="ch"><span class="ct">Top Hitters</span><span class="cbdg">Min 5 AB</span></div>
+      <div class="tw"><table class="st" id="top-tbl"><thead><tr><th>Player</th><th>AVG</th><th>AB</th><th>H</th><th>R</th><th>RBI</th><th>HR</th><th>2B</th><th>BB</th><th>SB</th><th>OBP</th><th>SLG</th><th>OPS</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
 </div>
+
 <!-- PLAYER CARDS -->
 <div class="pg" id="page-cards">
   <div class="card sec">
@@ -203,7 +301,7 @@ input[type=range]{accent-color:var(--gold);width:120px;}
     </div>
     <div class="pins-bar" id="pins-bar">
       <div class="pins-title">Pinned Comparisons</div>
-      <div class="pins-row" id="pins-row"><span class="no-pins">No players pinned — click a card then pin from the side panel</span></div>
+      <div class="pins-row" id="pins-row"><span class="no-pins">No players pinned &mdash; click a card then pin from the side panel</span></div>
       <div id="cmp-tbl"></div>
     </div>
     <div class="ctb">
@@ -224,19 +322,22 @@ input[type=range]{accent-color:var(--gold);width:120px;}
     </div>
   </div>
 </div>
+
 <!-- BATTING -->
-<div class="pg" id="page-roster">
+<div class="pg" id="page-batting">
   <div class="card sec"><div class="ch"><span class="ct">Rochester Hitters 2026</span></div>
     <div class="sw"><input class="si" type="text" placeholder="Search players..." id="hit-srch"></div>
     <div class="tw"><table class="st" id="hit-tbl"><thead><tr><th>Player</th><th>AVG</th><th>GP</th><th>AB</th><th>R</th><th>H</th><th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>TB</th><th>SLG</th><th>BB</th><th>HBP</th><th>SO</th><th>OBP</th><th>SF</th><th>SH</th><th>SB-ATT</th><th>PO</th><th>A</th><th>E</th><th>FLD%</th></tr></thead><tbody></tbody></table></div>
   </div>
 </div>
+
 <!-- PITCHING -->
 <div class="pg" id="page-pitching">
   <div class="card sec"><div class="ch"><span class="ct">Rochester Pitchers 2026</span></div>
     <div class="tw"><table class="st" id="pit-tbl"><thead><tr><th>Player</th><th>ERA</th><th>W-L</th><th>APP</th><th>GS</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th><th>BB</th><th>SO</th><th>HR</th><th>B/AVG</th><th>WP</th><th>HBP</th><th>BK</th></tr></thead><tbody></tbody></table></div>
   </div>
 </div>
+
 <!-- GAME LOG -->
 <div class="pg" id="page-gamelog">
   <div class="g2 sec">
@@ -245,6 +346,7 @@ input[type=range]{accent-color:var(--gold);width:120px;}
   </div>
   <div class="card sec"><div class="ch"><span class="ct">Scoring Distribution</span></div><div id="sc-dist" style="padding:14px;"></div></div>
 </div>
+
 <!-- CONFERENCE -->
 <div class="pg" id="page-conference">
   <div class="card sec"><div class="ch"><span class="ct">Liberty League Batting</span><span class="cbdg">2026 Overall</span></div><div id="ll-bat"></div></div>
@@ -254,6 +356,7 @@ input[type=range]{accent-color:var(--gold);width:120px;}
   </div>
   <div class="card sec"><div class="ch"><span class="ct">Liberty League Pitching</span></div><div id="ll-pit"></div></div>
 </div>
+
 <!-- LEADERS -->
 <div class="pg" id="page-leaders">
   <div class="card sec">
@@ -264,7 +367,88 @@ input[type=range]{accent-color:var(--gold);width:120px;}
     <div id="ldr-list"></div>
   </div>
 </div>
+
+
+<!-- SCHEDULE -->
+<div class="pg" id="page-schedule">
+  <div class="card sec">
+    <div class="ch"><span class="ct">2026 Schedule</span><span class="cbdg">7-3 Overall</span></div>
+    <!-- Live Stream Banner -->
+    <div style="background:linear-gradient(135deg,#1a2e54,#0f1c38);border-bottom:2px solid var(--gold);padding:14px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div style="background:var(--gold);border-radius:2px;padding:6px 10px;flex-shrink:0;">
+        <div style="font-family:Oswald,sans-serif;font-size:10px;font-weight:700;color:var(--navy);letter-spacing:2px;">LIVE STREAM</div>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:Oswald,sans-serif;font-size:13px;font-weight:600;color:var(--tp);">Home games stream live on FloCollege</div>
+        <div style="font-size:11px;color:var(--tm);margin-top:2px;">Subscription required &middot; Covers all University Athletic Association schools</div>
+      </div>
+      <a href="https://go.flocollege.com/partner/uaa?utm_medium=partner&utm_source=multiple&utm_content=landingpage&utm_term=university-of-rochester&contract_id=006px000005mtotyaw" target="_blank" style="background:var(--gold);color:var(--navy);font-family:Oswald,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:2px;text-decoration:none;flex-shrink:0;">Watch on FloCollege &rarr;</a>
+    </div>
+    <div id="schedule-table"></div>
+  </div>
 </div>
+
+<!-- ROSTER -->
+<div class="pg" id="page-roster-pg">
+  <div class="card sec">
+    <div class="ch"><span class="ct">2026 Roster</span><span class="cbdg">Rochester Yellowjackets</span></div>
+    <div class="sw">
+      <input class="si" type="text" placeholder="Search by name, position, year..." id="roster-search">
+      <select class="si" style="max-width:140px;" id="roster-pos-filter">
+        <option value="">All Positions</option>
+        <option value="P">Pitchers</option>
+        <option value="C">Catchers</option>
+        <option value="IF">Infielders</option>
+        <option value="OF">Outfielders</option>
+        <option value="UT">Utility</option>
+      </select>
+    </div>
+    <div class="tw"><table class="st" id="roster-tbl">
+      <thead><tr><th>#</th><th>Name</th><th>Pos</th><th>Yr</th><th>B/T</th><th>Ht</th><th>Hometown</th><th>High School / Prev</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <div style="padding:10px 14px;border-top:1px solid rgba(245,200,66,0.1);">
+      <a href="https://uofrathletics.com/sports/baseball/roster" target="_blank" style="font-family:Oswald,sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;">View full roster on uofrathletics.com &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- COACH'S PACKET -->
+<div class="pg" id="page-coach">
+  <div class="scout-hero sec no-print">
+    <div class="ch" style="margin:-16px -16px 16px;border-radius:0;"><span class="ct">Coach's Scouting Packet</span><span class="cbdg">2026 Liberty League</span></div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:1;">
+        <div style="font-family:Oswald,sans-serif;font-size:10px;letter-spacing:2px;color:var(--tm);margin-bottom:6px;">SELECT OPPONENT</div>
+        <select class="scout-select" id="scout-team-select">
+          <option value="">-- Pick an opponent --</option>
+          <option value="Ithaca">Ithaca</option>
+          <option value="Skidmore">Skidmore</option>
+          <option value="Bard">Bard</option>
+          <option value="Union">Union</option>
+          <option value="St. Lawrence">St. Lawrence</option>
+          <option value="RIT">RIT</option>
+          <option value="Hobart">Hobart</option>
+          <option value="Clarkson">Clarkson</option>
+          <option value="RPI">RPI</option>
+          <option value="Vassar">Vassar</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;margin-top:20px;">
+        <button class="print-btn" onclick="window.print()">Print Packet</button>
+        <button class="dl-btn" id="dl-csv-btn">Download CSV</button>
+      </div>
+    </div>
+  </div>
+  <div id="scout-content">
+    <div style="padding:60px;text-align:center;color:var(--tm);">
+      <div style="font-family:Oswald,sans-serif;font-size:48px;color:rgba(245,200,66,0.1);margin-bottom:16px;">&#9918;</div>
+      <div style="font-family:Oswald,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;">Select an opponent above to generate their scouting report</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
 
 <script>
 var ROC_H=[
@@ -360,37 +544,122 @@ var LL_P=[
 ];
 var ROC_INN={roc:[8,9,9,15,12,9,1,10,0],opp:[8,7,7,3,11,11,5,5,6]};
 
-function fa(n){return isNaN(n)||n===null?"--":n.toFixed(3).replace(/^0\./,".");}
-function fe(n){return isNaN(n)||n===null?"--":n.toFixed(2);}
-function pct(val,arr){if(!arr.length)return 0;var b=arr.filter(function(v){return v<val;}).length;return Math.round(b/arr.length*100);}
+function fa(n){if(isNaN(n)||n===null||n===undefined)return "--";var s=n.toFixed(3);return s.replace(/^0\./,".");}
+function fe(n){if(isNaN(n)||n===null)return "--";return n.toFixed(2);}
+function pct(val,arr){if(!arr||!arr.length)return 0;var b=arr.filter(function(v){return v<val;}).length;return Math.round(b/arr.length*100);}
 function bc(p){if(p>=80)return"#2ECC71";if(p>=60)return"#4ECDC4";if(p>=40)return"#F5C842";if(p>=20)return"#E8A838";return"#E05252";}
-
 function row(l,v){return '<div style="display:flex;justify-content:space-between;padding:7px 14px;border-bottom:1px solid rgba(255,255,255,0.03)"><span style="font-size:12px;color:var(--tm)">'+l+'</span><span style="font-family:Oswald,sans-serif;font-size:13px;font-weight:600;color:var(--tp)">'+v+'</span></div>';}
 function rowc(l,v,c){return '<div style="display:flex;justify-content:space-between;padding:7px 14px;border-bottom:1px solid rgba(255,255,255,0.03)"><span style="font-size:12px;color:var(--tm)">'+l+'</span><span style="font-family:Oswald,sans-serif;font-size:13px;font-weight:600;color:'+(c||"var(--tp)")+'">'+v+'</span></div>';}
-function mkbar(lbl,p){return '<div class="pb-row"><div class="pb-lbl">'+lbl+'</div><div class="pb-track"><div class="pb-fill" style="width:'+p+'%;background:'+bc(p)+'"></div></div><div class="pb-pct">'+p+'%</div></div>';}
+function mkbar(label,p){return '<div class="pb-row"><div class="pb-lbl">'+label+'</div><div class="pb-track"><div class="pb-fill" style="width:'+p+'%;background:'+bc(p)+'"></div></div><div class="pb-pct">'+p+'%</div></div>';}
 
-function initOverview(){
+/* ══ DASHBOARD ══ */
+function initDash(){
+  /* Highlights */
+  var roc=LL_T.find(function(t){return t.team==="Rochester";});
+  var sorted_avg=[...LL_T].sort(function(a,b){return b.avg-a.avg;});
+  var roc_avg_rank=sorted_avg.findIndex(function(t){return t.team==="Rochester";})+1;
+  var sorted_era=[...LL_T].sort(function(a,b){return a.era-b.era;});
+  var roc_era_rank=sorted_era.findIndex(function(t){return t.team==="Rochester";})+1;
+  var sorted_wl=[...LL_T].sort(function(a,b){var aw=parseInt(a.wl),bw=parseInt(b.wl);return bw-aw;});
+  var roc_wl_rank=sorted_wl.findIndex(function(t){return t.team==="Rochester";})+1;
+  var top_hitter=ROC_H.filter(function(p){return p.ab>=5;}).sort(function(a,b){return b.avg-a.avg;})[0];
+  var top_ops=ROC_H.filter(function(p){return p.ab>=5;}).sort(function(a,b){return (b.obp+b.slg)-(a.obp+a.slg);})[0];
+  var top_rbi=ROC_H.sort(function(a,b){return b.rbi-a.rbi;})[0];
+  var best_era=ROC_P.filter(function(p){return p.ip>=5;}).sort(function(a,b){return a.era-b.era;})[0];
+  var highlights=[
+    {label:"Team Batting Average",text:"Rochester is hitting .330 as a team, ranked "+roc_avg_rank+" in the Liberty League"},
+    {label:"Top Hitter",text:top_hitter.name+" leads the team hitting "+fa(top_hitter.avg)+" with "+top_hitter.rbi+" RBI"},
+    {label:"Best OPS",text:top_ops.name+" leads with an OPS of "+(top_ops.obp+top_ops.slg).toFixed(3).replace(/^0\./,".")},
+    {label:"Ace of the Staff",text:best_era.name+" leads pitchers with a "+fe(best_era.era)+" ERA over "+best_era.ip+" IP"}
+  ];
+  document.getElementById("highlights-row").innerHTML='<div class="g4 sec">'+highlights.map(function(h){return '<div class="highlight-banner"><div class="hb-label">'+h.label+'</div><div class="hb-text">'+h.text+'</div></div>';}).join("")+"</div>";
+
+  /* Rank badges */
+  var ranks=[
+    {n:roc_avg_rank,l:"Batting AVG"},{n:roc_era_rank,l:"Team ERA"},{n:roc_wl_rank,l:"Win-Loss"},
+    {n:1,l:"Saves (5)"},{n:4,l:"OBP"}
+  ];
+  document.getElementById("rank-badges").innerHTML='<div style="font-family:Oswald,sans-serif;font-size:10px;letter-spacing:2px;color:var(--tm);margin-bottom:10px;text-transform:uppercase">Rochester ranks in Liberty League</div>'+ranks.map(function(r){var suffix=r.n===1?"st":r.n===2?"nd":r.n===3?"rd":"th";return '<div class="rank-badge"><div class="rbn">'+r.n+suffix+'</div><div class="rbl">'+r.l+'</div></div>';}).join("");
+
+  /* vs League bars */
+  var ll_avg=LL_T.reduce(function(s,t){return s+t.avg;},0)/LL_T.length;
+  var ll_era=LL_T.reduce(function(s,t){return s+t.era;},0)/LL_T.length;
+  var ll_obp=LL_T.reduce(function(s,t){return s+t.obp;},0)/LL_T.length;
+  var ll_slg=LL_T.reduce(function(s,t){return s+t.slg;},0)/LL_T.length;
+  var comps=[
+    {l:"AVG",roc:roc.avg,ll:ll_avg,hi:true,fmt:fa},
+    {l:"OBP",roc:roc.obp,ll:ll_obp,hi:true,fmt:fa},
+    {l:"SLG",roc:roc.slg,ll:ll_slg,hi:true,fmt:fa},
+    {l:"ERA",roc:roc.era,ll:ll_era,hi:false,fmt:fe}
+  ];
+  var bHtml="";
+  comps.forEach(function(c){
+    var rocBetter=c.hi?(c.roc>c.ll):(c.roc<c.ll);
+    var maxV=c.hi?Math.max(c.roc,c.ll)*1.1:Math.max(c.roc,c.ll)*1.1;
+    var rocPct=Math.min(95,(c.roc/maxV*100));
+    var llPct=Math.min(95,(c.ll/maxV*100));
+    bHtml+='<div class="vs-row">'+
+      '<div class="vs-lbl">'+c.l+'</div>'+
+      '<div style="flex:1;display:flex;flex-direction:column;gap:3px;">'+
+        '<div style="display:flex;align-items:center;gap:6px;">'+
+          '<div style="width:34px;font-size:9px;color:var(--gold);font-family:Oswald,sans-serif;text-align:right">ROC</div>'+
+          '<div style="flex:1;height:14px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden;">'+
+            '<div style="width:'+rocPct+'%;height:100%;background:'+(rocBetter?"var(--gold)":"var(--tm)")+';border-radius:2px;"></div>'+
+          '</div>'+
+          '<div style="width:36px;font-size:10px;font-family:Oswald,sans-serif;color:'+(rocBetter?"var(--gold)":"var(--tm)")+'">'+c.fmt(c.roc)+'</div>'+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:6px;">'+
+          '<div style="width:34px;font-size:9px;color:var(--tm);font-family:Oswald,sans-serif;text-align:right">LG</div>'+
+          '<div style="flex:1;height:14px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden;">'+
+            '<div style="width:'+llPct+'%;height:100%;background:rgba(255,255,255,0.15);border-radius:2px;"></div>'+
+          '</div>'+
+          '<div style="width:36px;font-size:10px;font-family:Oswald,sans-serif;color:var(--tm)">'+c.fmt(c.ll)+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  });
+  document.getElementById("vs-league-bars").innerHTML=bHtml;
+
+  /* Hot performers */
+  var opsArr=ROC_H.map(function(p){return p.obp+p.slg;});
+  var hot=ROC_H.filter(function(p){return p.ab>=5;}).map(function(p){return {p:p,opsPct:pct(p.obp+p.slg,opsArr)};}).sort(function(a,b){return b.opsPct-a.opsPct;}).slice(0,4);
+  document.getElementById("hot-cards").innerHTML=hot.map(function(h){
+    var p=h.p;var ops=(p.obp+p.slg).toFixed(3).replace(/^0\./,".");
+    var fire=h.opsPct>=80?"&#128293;":h.opsPct>=60?"&#9733;":"";
+    return '<div class="hot-card">'+
+      '<div class="hc-fire">'+fire+'</div>'+
+      '<div class="hc-name">'+p.name+'</div>'+
+      '<div class="hc-stat">'+ops+'</div>'+
+      '<div class="hc-lbl">OPS &middot; '+h.opsPct+'th pct</div>'+
+      '<div style="margin-top:8px;display:flex;gap:10px;">'+
+        '<div><div style="font-family:Oswald,sans-serif;font-size:14px;color:var(--tp)">'+fa(p.avg)+'</div><div style="font-size:8px;color:var(--tm)">AVG</div></div>'+
+        '<div><div style="font-family:Oswald,sans-serif;font-size:14px;color:var(--tp)">'+p.rbi+'</div><div style="font-size:8px;color:var(--tm)">RBI</div></div>'+
+        '<div><div style="font-family:Oswald,sans-serif;font-size:14px;color:var(--tp)">'+p.r+'</div><div style="font-size:8px;color:var(--tm)">R</div></div>'+
+      '</div>'+
+    '</div>';
+  }).join("");
+
+  /* Team stat grid */
   var stats=[{v:".330",l:"Team AVG"},{v:"7-3",l:"Record"},{v:"102",l:"Hits"},{v:"73",l:"Runs"},{v:"20",l:"2B"},{v:"3",l:"HR"},{v:"66",l:"RBI"},{v:"6.16",l:"ERA"},{v:"5",l:"Saves"},{v:".944",l:"FLD%"},{v:"8",l:"SB"},{v:".411",l:"OBP"}];
   document.getElementById("ov-sg").innerHTML=stats.map(function(s){return '<div class="sc"><div class="sv">'+s.v+'</div><div class="sl">'+s.l+'</div></div>';}).join("");
+
+  /* Inning grid */
   var inn=ROC_INN,ig="";
   for(var i=0;i<9;i++)ig+='<div class="ic rr"><div class="il">Inn '+(i+1)+'</div><div class="iv">'+inn.roc[i]+'</div></div>';
   ig+='<div class="ic tot rr"><div class="il">Total</div><div class="iv">'+inn.roc.reduce(function(a,b){return a+b;},0)+'</div></div>';
   for(var i=0;i<9;i++)ig+='<div class="ic"><div class="il" style="color:var(--tm)">Opp</div><div class="iv" style="color:var(--tm);font-size:14px">'+inn.opp[i]+'</div></div>';
   ig+='<div class="ic tot"><div class="il">Total</div><div class="iv" style="font-size:18px;color:var(--tm)">'+inn.opp.reduce(function(a,b){return a+b;},0)+'</div></div>';
   document.getElementById("inn-grid").innerHTML=ig;
-  var sp=[["Overall","7-3"],["Conference","0-0"],["Non-Conference","7-3"],["Home","0-1"],["Neutral Site","7-2"],["Day Games","6-3"],["Night Games","1-0"],["1-Run Games","2-1"],["Shutouts","1-0"],["Scoring 3-5 R","2-3"],["Scoring 6-9 R","3-0"],["Scoring 10+ R","2-0"]];
-  document.getElementById("splits-list").innerHTML=sp.map(function(s){return row(s[0],s[1]);}).join("");
+
+  /* Top hitters */
   var sorted=ROC_H.filter(function(p){return p.ab>=5;}).sort(function(a,b){return b.avg-a.avg;});
-  document.querySelector("#top-tbl tbody").innerHTML=sorted.map(function(p){var ops=(p.obp+p.slg).toFixed(3).replace(/^0\./,".");return '<tr><td>'+p.name+'</td><td class="hi">'+fa(p.avg)+'</td><td>'+p.ab+'</td><td>'+p.h+'</td><td>'+p.r+'</td><td>'+p.rbi+'</td><td>'+p.hr+'</td><td>'+p.d+'</td><td>'+p.t+'</td><td>'+p.bb+'</td><td>'+p.sb.split("-")[0]+'</td><td>'+fa(p.obp)+'</td><td>'+fa(p.slg)+'</td><td class="hi">'+ops+'</td></tr>';}).join("");
+  document.querySelector("#top-tbl tbody").innerHTML=sorted.map(function(p){var ops=(p.obp+p.slg).toFixed(3).replace(/^0\./,".");return '<tr><td>'+p.name+'</td><td class="hi">'+fa(p.avg)+'</td><td>'+p.ab+'</td><td>'+p.h+'</td><td>'+p.r+'</td><td>'+p.rbi+'</td><td>'+p.hr+'</td><td>'+p.d+'</td><td>'+p.bb+'</td><td>'+p.sb.split("-")[0]+'</td><td>'+fa(p.obp)+'</td><td>'+fa(p.slg)+'</td><td class="hi">'+ops+'</td></tr>';}).join("");
 }
 
-/* CARDS */
+/* ══ CARDS ══ */
 var pinnedKeys=[],activeKey=null;
 function kfor(p){return p.name+"|"+p.team;}
-function getPercs(thr){
-  var f=ROC_H.filter(function(p){var pa=p.ab+p.bb+p.hbp+(p.sf||0)+(p.sh||0);return pa>=thr;});
-  return{ops:f.map(function(p){return p.obp+p.slg;}),avg:f.map(function(p){return p.avg;}),obp:f.map(function(p){return p.obp;}),slg:f.map(function(p){return p.slg;}),rbi:f.map(function(p){return p.rbi;}),iso:f.map(function(p){return p.slg-p.avg;})};
-}
+function getPercs(thr){var f=ROC_H.filter(function(p){var pa=p.ab+p.bb+p.hbp+(p.sf||0)+(p.sh||0);return pa>=thr;});return{ops:f.map(function(p){return p.obp+p.slg;}),avg:f.map(function(p){return p.avg;}),obp:f.map(function(p){return p.obp;}),slg:f.map(function(p){return p.slg;}),rbi:f.map(function(p){return p.rbi;}),iso:f.map(function(p){return p.slg-p.avg;})};}
 function renderCards(){
   var q=(document.getElementById("cs").value||"").toLowerCase();
   var mab=parseInt(document.getElementById("cmab").value)||0;
@@ -401,18 +670,18 @@ function renderCards(){
   var rows=ROC_H.slice();
   if(q)rows=rows.filter(function(p){return p.name.toLowerCase().indexOf(q)>=0;});
   if(mab>0)rows=rows.filter(function(p){return p.ab>=mab;});
-  rows.sort(function(a,b){
-    function gv(p,k){if(k==="ops")return p.obp+p.slg;if(k==="avg")return p.avg;if(k==="obp")return p.obp;if(k==="slg")return p.slg;return p[k]||0;}
-    return gv(b,sk)-gv(a,sk);
-  });
+  rows.sort(function(a,b){function gv(p,k){if(k==="ops")return p.obp+p.slg;if(k==="avg")return p.avg;if(k==="obp")return p.obp;if(k==="slg")return p.slg;return p[k]||0;}return gv(b,sk)-gv(a,sk);});
   document.getElementById("card-count").textContent=rows.length+" players";
   var g=document.getElementById("cards-grid");
   g.innerHTML=rows.map(function(p){
     var k=kfor(p);var ip=pinnedKeys.indexOf(k)>=0;var ia=activeKey===k;
     var ops=p.obp+p.slg;var iso=p.slg-p.avg;
     var opsp=pct(ops,ps.ops),obpp=pct(p.obp,ps.obp),slgp=pct(p.slg,ps.slg),isop=pct(iso,ps.iso),rbip=pct(p.rbi,ps.rbi);
-    var cls="pcard"+(ia?" active-card":"")+(ip?" pinned-card":"");
-    return '<div class="'+cls+'" data-key="'+k+'">'+(ip?'<div class="pin-badge">PINNED</div>':'')+
+    var isWill=p.name==="Will Webster";
+    var cls="pcard"+(ia?" active-card":"")+(ip?" pinned-card":"")+(isWill?" william-card":"");
+    return '<div class="'+cls+'" data-key="'+k+'">'+
+      (ip?'<div class="pin-badge">PINNED</div>':'')+
+      (isWill&&!ip?'<div class="william-badge">FEATURED</div>':'')+
       '<div class="pc-name">'+p.name+'</div>'+
       '<div class="pc-meta">AB '+p.ab+' | H '+p.h+' | RBI '+p.rbi+'</div>'+
       '<div class="pc-big">'+
@@ -424,14 +693,7 @@ function renderCards(){
       '<div class="pc-bars">'+mkbar("OPS",opsp)+mkbar("OBP",obpp)+mkbar("SLG",slgp)+mkbar("ISO",isop)+mkbar("RBI",rbip)+'</div>'+
     '</div>';
   }).join("");
-  g.querySelectorAll(".pcard").forEach(function(el){
-    el.addEventListener("click",function(){
-      var k=el.getAttribute("data-key");activeKey=k;
-      var rec=ROC_H.find(function(p){return kfor(p)===k;});
-      if(rec)renderSide(rec,thr,ps);
-      renderCards();
-    });
-  });
+  g.querySelectorAll(".pcard").forEach(function(el){el.addEventListener("click",function(){var k=el.getAttribute("data-key");activeKey=k;var rec=ROC_H.find(function(p){return kfor(p)===k;});if(rec)renderSide(rec,thr,ps);renderCards();});});
   renderPins();
 }
 function renderSide(p,thr,ps){
@@ -441,7 +703,7 @@ function renderSide(p,thr,ps){
   var ms=[{l:"OPS",v:ops.toFixed(3).replace(/^0\./,"."),p2:pct(ops,ps.ops)},{l:"OBP",v:fa(p.obp),p2:pct(p.obp,ps.obp)},{l:"SLG",v:fa(p.slg),p2:pct(p.slg,ps.slg)},{l:"AVG",v:fa(p.avg),p2:pct(p.avg,ps.avg)},{l:"ISO",v:iso.toFixed(3).replace(/^0\./,"."),p2:pct(iso,ps.iso)},{l:"RBI",v:p.rbi,p2:pct(p.rbi,ps.rbi)}];
   document.getElementById("side-panel").innerHTML='<div class="sp-content">'+
     '<div class="sp-name">'+p.name+'</div>'+
-    '<div class="sp-meta">Rochester · '+p.gp+' GP · ~'+pa+' PA</div>'+
+    '<div class="sp-meta">Rochester &middot; '+p.gp+' GP &middot; ~'+pa+' PA</div>'+
     '<div class="sp-big">'+
       '<div class="spb"><div class="spb-lbl">OPS</div><div class="spb-val">'+ops.toFixed(3).replace(/^0\./,".")+'</div></div>'+
       '<div class="spb"><div class="spb-lbl">AVG</div><div class="spb-val">'+fa(p.avg)+'</div></div>'+
@@ -454,12 +716,7 @@ function renderSide(p,thr,ps){
     [["AB",p.ab],["H",p.h],["R",p.r],["RBI",p.rbi],["HR",p.hr],["2B",p.d||0],["3B",p.t||0],["BB",p.bb],["SO",p.so||0],["SB",p.sb]].map(function(x){return '<div class="sp-row"><span class="sp-rl">'+x[0]+'</span><span class="sp-rv">'+x[1]+'</span></div>';}).join("")+
     '<div class="sp-actions"><button class="sp-btn '+(ip?"unpin":"pin")+'" id="sp-pin">'+(ip?"Unpin":"Pin for Comparison")+'</button></div>'+
   '</div>';
-  document.getElementById("sp-pin").addEventListener("click",function(){
-    if(pinnedKeys.indexOf(k)>=0){pinnedKeys=pinnedKeys.filter(function(x){return x!==k;});}
-    else{if(pinnedKeys.length>=5)pinnedKeys.shift();pinnedKeys.push(k);}
-    renderCards();
-    renderSide(p,thr,getPercs(thr));
-  });
+  document.getElementById("sp-pin").addEventListener("click",function(){if(pinnedKeys.indexOf(k)>=0){pinnedKeys=pinnedKeys.filter(function(x){return x!==k;});}else{if(pinnedKeys.length>=5)pinnedKeys.shift();pinnedKeys.push(k);}renderCards();renderSide(p,thr,getPercs(thr));});
 }
 function renderPins(){
   var pr=document.getElementById("pins-row"),ct=document.getElementById("cmp-tbl");
@@ -469,21 +726,18 @@ function renderPins(){
   pr.querySelectorAll(".px").forEach(function(x){x.addEventListener("click",function(e){e.stopPropagation();var k=x.getAttribute("data-unpin");pinnedKeys=pinnedKeys.filter(function(pk){return pk!==k;});renderCards();});});
   var mets=["avg","obp","slg","rbi","hr","r","ab"];var lbls=["AVG","OBP","SLG","RBI","HR","R","AB"];
   var cols="60px "+pinned.map(function(){return "1fr";}).join(" ");
-  var html='<div class="pin-compare"><div style="display:grid;grid-template-columns:'+cols+';border-bottom:1px solid rgba(245,200,66,0.2);margin-bottom:2px">';
-  html+='<div class="pcr-lbl" style="background:transparent;font-weight:700">Stat</div>';
-  pinned.forEach(function(p){html+='<div class="pch-name">'+p.name.split(" ").pop()+'</div>';});
-  html+='</div>';
+  var chtml='<div class="pin-compare"><div style="display:grid;grid-template-columns:'+cols+';border-bottom:1px solid rgba(245,200,66,0.2);margin-bottom:2px">';
+  chtml+='<div class="pcr-lbl" style="background:transparent;font-weight:700">Stat</div>';
+  pinned.forEach(function(p){chtml+='<div class="pch-name">'+p.name.split(" ").pop()+'</div>';});
+  chtml+='</div>';
   mets.forEach(function(m,i){
     var vals=pinned.map(function(p){return p[m];});var mx=Math.max.apply(null,vals);
-    html+='<div style="display:grid;grid-template-columns:'+cols+';border-bottom:1px solid rgba(255,255,255,0.03)">';
-    html+='<div class="pcr-lbl">'+lbls[i]+'</div>';
-    vals.forEach(function(v,j){
-      var fmt=(m==="avg"||m==="obp"||m==="slg")?fa(v):v;
-      html+='<div class="pcr-val'+(v===mx?" best":"")+'">'+fmt+'</div>';
-    });
-    html+='</div>';
+    chtml+='<div style="display:grid;grid-template-columns:'+cols+';border-bottom:1px solid rgba(255,255,255,0.03)">';
+    chtml+='<div class="pcr-lbl">'+lbls[i]+'</div>';
+    vals.forEach(function(v,j){var fmt=(m==="avg"||m==="obp"||m==="slg")?fa(v):v;chtml+='<div class="pcr-val'+(v===mx?" best":"")+'">'+fmt+'</div>';});
+    chtml+='</div>';
   });
-  html+='</div>';ct.innerHTML=html;
+  chtml+='</div>';ct.innerHTML=chtml;
 }
 function initCards(){
   document.getElementById("cs").addEventListener("input",renderCards);
@@ -493,33 +747,28 @@ function initCards(){
   document.getElementById("exp-csv").addEventListener("click",function(){
     var cols=["name","ab","h","r","hr","rbi","avg","obp","slg"];
     var lines=[cols.join(",")];
-    ROC_H.forEach(function(r){lines.push(cols.map(function(c){return '"'+(r[c]||"")+'";'}).join(","));});
+    ROC_H.forEach(function(r){lines.push(cols.map(function(c){return '"'+( r[c]||"")+'"';}).join(","));});
     var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([lines.join("\n")],{type:"text/csv"}));a.download="roc_players_2026.csv";a.click();
   });
   document.getElementById("clr-pins").addEventListener("click",function(){pinnedKeys=[];renderCards();});
-  document.getElementById("clr-all").addEventListener("click",function(){
-    pinnedKeys=[];activeKey=null;
-    ["cs","cmab"].forEach(function(id){document.getElementById(id).value="";});
-    document.getElementById("cmab").value=0;document.getElementById("cpa").value=0;document.getElementById("csort").value="ops";
-    document.getElementById("side-panel").innerHTML='<div class="sp-empty"><div class="sp-ico">&#9918;</div><p>Pick a player</p><small>Click any card to see details</small></div>';
-    renderCards();
-  });
+  document.getElementById("clr-all").addEventListener("click",function(){pinnedKeys=[];activeKey=null;["cs","cmab"].forEach(function(id){document.getElementById(id).value="";});document.getElementById("cmab").value=0;document.getElementById("cpa").value=0;document.getElementById("csort").value="ops";document.getElementById("side-panel").innerHTML='<div class="sp-empty"><div class="sp-ico">&#9918;</div><p>Pick a player</p><small>Click any card</small></div>';renderCards();});
   renderCards();
 }
 
+/* ══ BATTING TABLE ══ */
 function initBatting(){
   function render(data){document.querySelector("#hit-tbl tbody").innerHTML=data.map(function(p){return '<tr><td>'+p.name+'</td><td class="hi">'+fa(p.avg)+'</td><td>'+p.gp+'</td><td>'+p.ab+'</td><td>'+p.r+'</td><td>'+p.h+'</td><td>'+p.d+'</td><td>'+p.t+'</td><td>'+p.hr+'</td><td>'+p.rbi+'</td><td>'+p.tb+'</td><td>'+fa(p.slg)+'</td><td>'+p.bb+'</td><td>'+p.hbp+'</td><td>'+p.so+'</td><td>'+fa(p.obp)+'</td><td>'+p.sf+'</td><td>'+p.sh+'</td><td>'+p.sb+'</td><td>'+p.po+'</td><td>'+p.a+'</td><td>'+p.e+'</td><td>'+p.fld.toFixed(3)+'</td></tr>';}).join("");}
   render(ROC_H);
   document.getElementById("hit-srch").addEventListener("input",function(e){render(ROC_H.filter(function(p){return p.name.toLowerCase().indexOf(e.target.value.toLowerCase())>=0;}));});
 }
 
-function initPitching(){
-  document.querySelector("#pit-tbl tbody").innerHTML=[...ROC_P].sort(function(a,b){return a.era-b.era;}).map(function(p){return '<tr><td>'+p.name+'</td><td class="hi">'+fe(p.era)+'</td><td>'+p.wl+'</td><td>'+p.app+'</td><td>'+p.gs+'</td><td>'+p.sv+'</td><td>'+p.ip+'</td><td>'+p.h+'</td><td>'+p.r+'</td><td>'+p.er+'</td><td>'+p.bb+'</td><td>'+p.so+'</td><td>'+p.hr+'</td><td>'+fa(p.bavg)+'</td><td>'+p.wp+'</td><td>'+p.hbp+'</td><td>'+p.bk+'</td></tr>';}).join("");
-}
+/* ══ PITCHING ══ */
+function initPitching(){document.querySelector("#pit-tbl tbody").innerHTML=[...ROC_P].sort(function(a,b){return a.era-b.era;}).map(function(p){return '<tr><td>'+p.name+'</td><td class="hi">'+fe(p.era)+'</td><td>'+p.wl+'</td><td>'+p.app+'</td><td>'+p.gs+'</td><td>'+p.sv+'</td><td>'+p.ip+'</td><td>'+p.h+'</td><td>'+p.r+'</td><td>'+p.er+'</td><td>'+p.bb+'</td><td>'+p.so+'</td><td>'+p.hr+'</td><td>'+fa(p.bavg)+'</td><td>'+p.wp+'</td><td>'+p.hbp+'</td><td>'+p.bk+'</td></tr>';}).join("");}
 
+/* ══ GAME LOG ══ */
 function initGameLog(){
   document.getElementById("wl-det").innerHTML=[["Overall","7-3"],["Conference","0-0"],["Non-Conference","7-3"],["Home","0-1"],["Away","0-0"],["Neutral Site","7-2"],["Day Games","6-3"],["Night Games","1-0"],["vs Left Starter","0-0"],["vs Right Starter","7-3"],["1-Run Games","2-1"],["5+ Run Games","0-1"]].map(function(s){return row(s[0],s[1]);}).join("");
-  document.getElementById("str-det").innerHTML=[["Current Losing Streak","2","var(--red)"],["Longest Win Streak","4","var(--green)"],["Longest Losing Streak","2","var(--red)"],["After 6 Leading","6-0","var(--green)"],["After 6 Trailing","0-3","var(--red)"],["Scoring 6-9 R","3-0","var(--green)"],["Scoring 10+ R","2-0","var(--green)"],["Out-hit Opponent","3-1",null],["Opp 2+ Errors","4-3",null],["Hits Tied","3-1",null]].map(function(s){return rowc(s[0],s[1],s[2]);}).join("");
+  document.getElementById("str-det").innerHTML=[["Current Losing Streak","2","var(--red)"],["Longest Win Streak","4","var(--green)"],["Longest Losing Streak","2","var(--red)"],["After 6 Leading","6-0","var(--green)"],["After 6 Trailing","0-3","var(--red)"],["Scoring 6-9 R","3-0","var(--green)"],["Scoring 10+ R","2-0","var(--green)"],["Out-hit Opponent","3-1",null],["Opp 2+ Errors","4-3",null]].map(function(s){return rowc(s[0],s[1],s[2]);}).join("");
   var byR=[{r:0,wl:"0-0"},{r:1,wl:"0-0"},{r:2,wl:"0-0"},{r:3,wl:"1-1"},{r:4,wl:"0-1"},{r:5,wl:"1-1"},{r:6,wl:"0-0"},{r:7,wl:"0-0"},{r:8,wl:"2-0"},{r:9,wl:"1-0"},{r:"10+",wl:"2-0"}];
   var byO=[{r:0,wl:"1-0"},{r:1,wl:"1-0"},{r:2,wl:"0-0"},{r:3,wl:"0-0"},{r:4,wl:"0-0"},{r:5,wl:"1-0"},{r:6,wl:"1-1"},{r:7,wl:"1-1"},{r:8,wl:"0-1"},{r:9,wl:"1-0"},{r:"10+",wl:"1-0"}];
   function dc(wl){var p=wl.split("-").map(Number);return p[0]>p[1]?"var(--green)":p[0]===0&&p[1]===0?"var(--tm)":"var(--red)";}
@@ -527,20 +776,22 @@ function initGameLog(){
   document.getElementById("sc-dist").innerHTML='<p style="font-family:Oswald,sans-serif;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:10px">WHEN ROCHESTER SCORES</p><div style="display:grid;grid-template-columns:repeat(11,1fr);gap:2px;margin-bottom:16px">'+distRow(byR)+'</div><p style="font-family:Oswald,sans-serif;font-size:10px;letter-spacing:2px;color:var(--tm);margin-bottom:10px">WHEN OPPONENT SCORES</p><div style="display:grid;grid-template-columns:repeat(11,1fr);gap:2px">'+distRow(byO)+'</div>';
 }
 
+/* ══ CONFERENCE ══ */
 function initConference(){
   var bs=[...LL_T].sort(function(a,b){return b.avg-a.avg;});
   var bh='<div class="lhh"><div class="lhc">#</div><div class="lhc" style="text-align:left">Team</div><div class="lhc">W-L</div><div class="lhc">AVG</div><div class="lhc">OBP</div><div class="lhc">SLG</div></div>';
-  bs.forEach(function(t,i){var rr=t.team==="Rochester";bh+='<div class="lhr'+(rr?" rr":"")+'"><div class="rank'+(i<3?" t3":"")+'">'+i+1+'</div><div class="tn" style="'+(rr?"color:var(--gold)":"")+'">'+t.team+(rr?" \u2605":"")+'</div><div class="tc">'+t.wl+'</div><div class="tc'+(i===0||rr?" hi":"")+'">'+t.avg.toFixed(3).replace(/^0\./,".")+'</div><div class="tc">'+t.obp.toFixed(3).replace(/^0\./,".")+'</div><div class="tc">'+t.slg.toFixed(3).replace(/^0\./,".")+'</div></div>';});
+  bs.forEach(function(t,i){var rr=t.team==="Rochester";bh+='<div class="lhr'+(rr?" rr":"")+'"><div class="rank'+(i<3?" t3":"")+'">'+( i+1)+'</div><div class="tn" style="'+(rr?"color:var(--gold)":"")+'">'+t.team+(rr?" \u2605":"")+'</div><div class="tc">'+t.wl+'</div><div class="tc'+(i===0||rr?" hi":"")+'">'+t.avg.toFixed(3).replace(/^0\./,".")+'</div><div class="tc">'+t.obp.toFixed(3).replace(/^0\./,".")+'</div><div class="tc">'+t.slg.toFixed(3).replace(/^0\./,".")+'</div></div>';});
   document.getElementById("ll-bat").innerHTML=bh;
   var am=Math.max.apply(null,LL_T.map(function(t){return t.avg;}));
-  document.getElementById("avg-bars").innerHTML=bs.map(function(t){var p=(t.avg/am*100).toFixed(1);var rr=t.team==="Rochester";return '<div class="br"><div class="bl'+(rr?" r":"")+'">'+t.team+'</div><div class="bt"><div class="bf'+(rr?" r":"")+'" style="width:'+p+'%"></div></div><div class="bv'+(rr?" r":"")+'">'+t.avg.toFixed(3).replace(/^0\./,".")+'</div></div>';}).join("");
+  document.getElementById("avg-bars").innerHTML=[...LL_T].sort(function(a,b){return b.avg-a.avg;}).map(function(t){var p=(t.avg/am*100).toFixed(1);var rr=t.team==="Rochester";return '<div class="br"><div class="bl'+(rr?" r":"")+'">'+t.team+'</div><div class="bt"><div class="bf'+(rr?" r":"")+'" style="width:'+p+'%"></div></div><div class="bv'+(rr?" r":"")+'">'+t.avg.toFixed(3).replace(/^0\./,".")+'</div></div>';}).join("");
   var ps=[...LL_T].sort(function(a,b){return a.era-b.era;});var em=Math.max.apply(null,LL_T.map(function(t){return t.era;}));
   document.getElementById("era-bars").innerHTML=ps.map(function(t){var p=Math.max(5,((em-t.era)/em*100)).toFixed(1);var rr=t.team==="Rochester";return '<div class="br"><div class="bl'+(rr?" r":"")+'">'+t.team+'</div><div class="bt"><div class="bf'+(rr?" r":"")+'" style="width:'+p+'%"></div></div><div class="bv'+(rr?" r":"")+'">'+fe(t.era)+'</div></div>';}).join("");
   var ph='<div class="lhh"><div class="lhc">#</div><div class="lhc" style="text-align:left">Team</div><div class="lhc">W-L</div><div class="lhc">ERA</div><div class="lhc">FLD%</div><div class="lhc">G</div></div>';
-  ps.forEach(function(t,i){var rr=t.team==="Rochester";ph+='<div class="lhr'+(rr?" rr":"")+'"><div class="rank'+(i<3?" t3":"")+'">'+i+1+'</div><div class="tn" style="'+(rr?"color:var(--gold)":"")+'">'+t.team+(rr?" \u2605":"")+'</div><div class="tc">'+t.wl+'</div><div class="tc'+(i===0||rr?" hi":"")+'">'+fe(t.era)+'</div><div class="tc">'+t.fld.toFixed(3)+'</div><div class="tc">'+t.g+'</div></div>';});
+  ps.forEach(function(t,i){var rr=t.team==="Rochester";ph+='<div class="lhr'+(rr?" rr":"")+'"><div class="rank'+(i<3?" t3":"")+'">'+( i+1)+'</div><div class="tn" style="'+(rr?"color:var(--gold)":"")+'">'+t.team+(rr?" \u2605":"")+'</div><div class="tc">'+t.wl+'</div><div class="tc'+(i===0||rr?" hi":"")+'">'+fe(t.era)+'</div><div class="tc">'+t.fld.toFixed(3)+'</div><div class="tc">'+t.g+'</div></div>';});
   document.getElementById("ll-pit").innerHTML=ph;
 }
 
+/* ══ LEADERS ══ */
 function renderLeaders(stat){
   var c=document.getElementById("ldr-list");
   var isPitch=stat==="era"||stat==="so_p";
@@ -549,28 +800,262 @@ function renderLeaders(stat){
     data=[...LL_P];
     if(stat==="era"){data.sort(function(a,b){return a.era-b.era;});vfn=function(p){return fe(p.era);};lbl="ERA";}
     else{data.sort(function(a,b){return b.so-a.so;});vfn=function(p){return p.so;};lbl="SO";}
-    sfn=function(p){return p.team+" · "+p.ip+" IP · "+p.w+"-"+p.l;};
+    sfn=function(p){return p.team+" &middot; "+p.ip+" IP &middot; "+p.w+"-"+p.l;};
   }else{
     data=[...LL_H];
     var lblMap={avg:"AVG",ops:"OPS",hr:"HR",rbi:"RBI",r:"R",h:"H",sb:"SB"};
     if(stat==="sb")data.sort(function(a,b){return parseInt(b.sb)-parseInt(a.sb);});
     else data.sort(function(a,b){return (b[stat]||0)-(a[stat]||0);});
     vfn=function(p){if(stat==="avg"||stat==="obp"||stat==="slg")return fa(p[stat]);if(stat==="ops")return p.ops.toFixed(3).replace(/^0\./,".");if(stat==="sb")return parseInt(p.sb);return p[stat];};
-    lbl=lblMap[stat];sfn=function(p){return p.team+" · "+p.gp+" GP · "+p.ab+" AB";};
+    lbl=lblMap[stat];sfn=function(p){return p.team+" &middot; "+p.gp+" GP &middot; "+p.ab+" AB";};
   }
   c.innerHTML=data.slice(0,15).map(function(p,i){var rr=p.team==="Rochester";return '<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(255,255,255,0.03);'+(rr?"background:rgba(245,200,66,0.07)":"")+'"><div style="font-family:Oswald,sans-serif;font-size:18px;font-weight:700;color:'+(i<3?"var(--gold)":"var(--tm)")+';width:32px">'+(i+1)+'</div><div style="flex:1"><div style="font-family:Oswald,sans-serif;font-size:13px;font-weight:600;color:'+(rr?"var(--gold)":"var(--tp)")+'">'+p.name+'</div><div style="font-size:10px;color:var(--tm)">'+sfn(p)+'</div></div><div style="font-family:Oswald,sans-serif;font-size:22px;font-weight:700;color:'+(rr?"var(--gold)":"var(--tp)")+'">'+vfn(p)+'</div><div style="font-family:Oswald,sans-serif;font-size:9px;color:var(--tm);margin-left:5px;text-transform:uppercase">'+lbl+'</div></div>';}).join("");
 }
 
-/* NAV */
+/* ══ COACH'S PACKET ══ */
+function renderScout(teamName){
+  if(!teamName){document.getElementById("scout-content").innerHTML='<div style="padding:60px;text-align:center;color:var(--tm);"><div style="font-family:Oswald,sans-serif;font-size:48px;color:rgba(245,200,66,0.1);margin-bottom:16px;">&#9918;</div><div style="font-family:Oswald,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;">Select an opponent above</div></div>';return;}
+  var team=LL_T.find(function(t){return t.team===teamName;});
+  if(!team)return;
+  var hitters=LL_H.filter(function(p){return p.team===teamName;}).sort(function(a,b){return b.avg-a.avg;});
+  var pitchers=LL_P.filter(function(p){return p.team===teamName;}).sort(function(a,b){return a.era-b.era;});
+  var threats=hitters.slice(0,3);
+  var threatPitcher=pitchers[0];
+
+  var html='<div class="card sec">'+
+    '<div style="background:var(--gold);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">'+
+      '<div><div style="font-family:Oswald,sans-serif;font-size:22px;font-weight:700;color:var(--navy)">'+teamName+'</div><div style="font-size:10px;color:rgba(10,22,40,0.7);letter-spacing:2px;text-transform:uppercase;">2026 Scouting Report &middot; Liberty League</div></div>'+
+      '<div style="text-align:right"><div style="font-family:Oswald,sans-serif;font-size:24px;font-weight:700;color:var(--navy)">'+team.wl+'</div><div style="font-size:9px;color:rgba(10,22,40,0.6);letter-spacing:1px">W-L RECORD</div></div>'+
+    '</div>'+
+
+    '<div class="sg" style="grid-template-columns:repeat(6,1fr)">'+
+      [{v:team.avg.toFixed(3).replace(/^0\./,"."),l:"Team AVG"},{v:team.era.toFixed(2),l:"Team ERA"},{v:team.obp.toFixed(3).replace(/^0\./,"."),l:"OBP"},{v:team.slg.toFixed(3).replace(/^0\./,"."),l:"SLG"},{v:team.sb,l:"Stolen Bases"},{v:team.fld.toFixed(3),l:"FLD%"}].map(function(s){return '<div class="sc"><div class="sv">'+s.v+'</div><div class="sl">'+s.l+'</div></div>';}).join("")+
+    '</div>'+
+
+    '<div class="scout-section-title">Top Threats to Watch</div>'+
+    '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;">'+
+    threats.map(function(p,i){
+      return '<div class="threat-card">'+
+        '<div class="threat-rank">'+(i+1)+'</div>'+
+        '<div class="threat-name">'+p.name+'</div>'+
+        '<div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">'+
+          [["AVG",fa(p.avg)],["OPS",p.ops.toFixed(3).replace(/^0\./,".")],["RBI",p.rbi]].map(function(s){return '<div><div class="threat-stat">'+s[1]+'</div><div class="threat-lbl">'+s[0]+'</div></div>';}).join("")+
+        '</div>'+
+      '</div>';
+    }).join("")+
+    '</div>'+
+
+    '<div class="scout-section-title">Full Batting Roster</div>'+
+    '<div class="tw"><table class="st">'+
+      '<thead><tr><th>Player</th><th>AVG</th><th>OPS</th><th>AB</th><th>H</th><th>R</th><th>RBI</th><th>HR</th><th>2B</th><th>3B</th><th>BB</th><th>SO</th><th>OBP</th><th>SLG</th><th>SB</th></tr></thead>'+
+      '<tbody>'+hitters.map(function(p){return '<tr><td>'+p.name+'</td><td class="hi">'+fa(p.avg)+'</td><td>'+p.ops.toFixed(3).replace(/^0\./,".")+'</td><td>'+p.ab+'</td><td>'+p.h+'</td><td>'+p.r+'</td><td>'+p.rbi+'</td><td>'+p.hr+'</td><td>'+p.d+'</td><td>'+p.t+'</td><td>'+p.bb+'</td><td>'+p.so+'</td><td>'+fa(p.obp)+'</td><td>'+fa(p.slg)+'</td><td>'+p.sb+'</td></tr>';}).join("")+'</tbody>'+
+    '</table></div>'+
+
+    '<div class="scout-section-title">Pitching Staff</div>'+
+    '<div class="tw"><table class="st">'+
+      '<thead><tr><th>Pitcher</th><th>ERA</th><th>W-L</th><th>GS</th><th>SV</th><th>IP</th><th>H</th><th>BB</th><th>SO</th><th>HR</th><th>B/AVG</th></tr></thead>'+
+      '<tbody>'+pitchers.map(function(p){return '<tr><td>'+p.name+'</td><td class="hi">'+fe(p.era)+'</td><td>'+p.w+'-'+p.l+'</td><td>'+p.gs+'</td><td>'+p.sv+'</td><td>'+p.ip+'</td><td>'+p.h+'</td><td>'+p.bb+'</td><td>'+p.so+'</td><td>'+p.hr+'</td><td>'+fa(p.bavg)+'</td></tr>';}).join("")+'</tbody>'+
+    '</table></div>'+
+
+    '<div class="scout-section-title">ROC vs '+teamName+' Key Matchups</div>'+
+    '<div class="tw"><table class="st">'+
+      '<thead><tr><th>Stat</th><th>Rochester</th><th>'+teamName+'</th><th>Edge</th></tr></thead>'+
+      '<tbody>'+
+      [[" Team AVG",0.330,team.avg,true],["Team ERA",6.16,team.era,false],["Team OBP",0.411,team.obp,true],["Team SLG",0.437,team.slg,true]].map(function(r){
+        var rocBetter=r[3]?(r[1]>r[2]):(r[1]<r[2]);
+        var edge=rocBetter?'<span style="color:var(--green)">ROC \u2191</span>':'<span style="color:var(--red)">'+teamName+' \u2191</span>';
+        return '<tr><td>'+r[0]+'</td><td class="hi">'+r[1].toFixed(3).replace(/^0\./,".")+'</td><td>'+r[2].toFixed(r[3]?3:2).replace(/^0\./,".")+'</td><td>'+edge+'</td></tr>';
+      }).join("")+
+      '</tbody>'+
+    '</table></div>'+
+  '</div>';
+
+  document.getElementById("scout-content").innerHTML=html;
+}
+
+function initCoach(){
+  document.getElementById("scout-team-select").addEventListener("change",function(){renderScout(this.value);});
+  document.getElementById("dl-csv-btn").addEventListener("click",function(){
+    var team=document.getElementById("scout-team-select").value;
+    if(!team){alert("Please select a team first.");return;}
+    var hitters=LL_H.filter(function(p){return p.team===team;});
+    var pitchers=LL_P.filter(function(p){return p.team===team;});
+    var lines=["BATTING"];
+    lines.push("Name,AVG,OPS,AB,H,R,RBI,HR,2B,3B,BB,SO,OBP,SLG,SB");
+    hitters.forEach(function(p){lines.push([p.name,fa(p.avg),p.ops.toFixed(3),p.ab,p.h,p.r,p.rbi,p.hr,p.d,p.t,p.bb,p.so,fa(p.obp),fa(p.slg),p.sb].join(","));});
+    lines.push("","PITCHING");
+    lines.push("Name,ERA,W,L,GS,SV,IP,H,BB,SO,HR,B/AVG");
+    pitchers.forEach(function(p){lines.push([p.name,fe(p.era),p.w,p.l,p.gs,p.sv,p.ip,p.h,p.bb,p.so,p.hr,fa(p.bavg)].join(","));});
+    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([lines.join("\n")],{type:"text/csv"}));a.download="scout_"+team.replace(/ /g,"_")+"_2026.csv";a.click();
+  });
+}
+
+
+/* ══ SCHEDULE ══ */
+var SCHEDULE=[
+  {date:"Mar 6",day:"Fri",time:"2:15pm",opp:"Keystone College",loc:"Auburndale, FL",home:false,conf:false,result:"W",score:"18-14",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 7",day:"Sat",time:"9:30am",opp:"Maritime College",loc:"Auburndale, FL",home:false,conf:false,result:"W",score:"8-7",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 7",day:"Sat",time:"12:00pm",opp:"Maritime College",loc:"Auburndale, FL",home:false,conf:false,result:"W",score:"5-1",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 9",day:"Mon",time:"3:30pm",opp:"Utica University",loc:"Winter Haven, FL",home:false,conf:false,result:"L",score:"5-6",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 9",day:"Mon",time:"6:00pm",opp:"Utica University",loc:"Winter Haven, FL",home:false,conf:false,result:"W",score:"3-0",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 10",day:"Tue",time:"2:15pm",opp:"Wesleyan University",loc:"Winter Haven, FL",home:false,conf:false,result:"W",score:"8-5",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 11",day:"Wed",time:"3:45pm",opp:"Wheaton College (MA)",loc:"Auburndale, FL",home:false,conf:false,result:"W",score:"10-9",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 12",day:"Thu",time:"9:30am",opp:"Dickinson College",loc:"Winter Haven, FL",home:false,conf:false,result:"W",score:"9-6",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 12",day:"Thu",time:"12:00pm",opp:"Dickinson College",loc:"Winter Haven, FL",home:false,conf:false,result:"L",score:"3-8",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 13",day:"Fri",time:"9:00am",opp:"Washington & Jefferson",loc:"Auburndale, FL",home:false,conf:false,result:"L",score:"4-7",watch:"",neutral:true,tourney:"RussMatt Invitational"},
+  {date:"Mar 16",day:"Mon",time:"5:00pm",opp:"St. John Fisher",loc:"Towers Field, Rochester NY",home:true,conf:false,result:"",score:"",watch:"https://flosports.link/4jQYHB0",neutral:false,tourney:""},
+  {date:"Mar 20",day:"Fri",time:"3:00pm",opp:"at Ithaca College",loc:"Ithaca, NY",home:false,conf:true,result:"",score:"",watch:"https://www.youtube.com/@BomberSports/streams",neutral:false,tourney:""},
+  {date:"Mar 21",day:"Sat",time:"12:00pm",opp:"Ithaca College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4k4u9Mf",neutral:false,tourney:""},
+  {date:"Mar 21",day:"Sat",time:"3:00pm",opp:"Ithaca College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4k4u9Mf",neutral:false,tourney:""},
+  {date:"Mar 24",day:"Tue",time:"4:00pm",opp:"SUNY Brockport",loc:"Towers Field, Rochester NY",home:true,conf:false,result:"",score:"",watch:"https://flosports.link/49GBxsg",neutral:false,tourney:""},
+  {date:"Mar 25",day:"Wed",time:"3:30pm",opp:"at Keuka College",loc:"Keuka Park, NY",home:false,conf:false,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Mar 27",day:"Fri",time:"4:00pm",opp:"Hobart College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4r7rMuk",neutral:false,tourney:""},
+  {date:"Mar 28",day:"Sat",time:"12:00pm",opp:"at Hobart College",loc:"Geneva, NY",home:false,conf:true,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Mar 28",day:"Sat",time:"3:00pm",opp:"at Hobart College",loc:"Geneva, NY",home:false,conf:true,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Mar 31",day:"Tue",time:"3:30pm",opp:"at SUNY Cortland",loc:"Cortland, NY",home:false,conf:false,result:"",score:"",watch:"https://www.cortlandreddragons.com/sports/2019/8/15/BlueFramePage.aspx",neutral:false,tourney:""},
+  {date:"Apr 3",day:"Fri",time:"4:00pm",opp:"St. Lawrence University",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4jPQr48",neutral:false,tourney:""},
+  {date:"Apr 4",day:"Sat",time:"2:00pm",opp:"St. Lawrence University",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/3Lx2eb7",neutral:false,tourney:""},
+  {date:"Apr 4",day:"Sat",time:"5:00pm",opp:"St. Lawrence University",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/3Lx2eb7",neutral:false,tourney:""},
+  {date:"Apr 11",day:"Sat",time:"12:00pm",opp:"Union College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4bwWFUL",neutral:false,tourney:""},
+  {date:"Apr 11",day:"Sat",time:"3:00pm",opp:"Union College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4bwWFUL",neutral:false,tourney:""},
+  {date:"Apr 12",day:"Sun",time:"11:30am",opp:"Union College",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/3YPBGVz",neutral:false,tourney:""},
+  {date:"Apr 14",day:"Tue",time:"6:00pm",opp:"Oswego State",loc:"Towers Field, Rochester NY",home:true,conf:false,result:"",score:"",watch:"https://flosports.link/462iyY7",neutral:false,tourney:""},
+  {date:"Apr 15",day:"Wed",time:"4:00pm",opp:"at Oswego State",loc:"Oswego, NY",home:false,conf:false,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Apr 17",day:"Fri",time:"3:00pm",opp:"at Clarkson University",loc:"Potsdam, NY",home:false,conf:true,result:"",score:"",watch:"https://clarksonathletics.com/sports/2018/5/5/clarkson-baseball-from-jack-phillips-stadium.aspx?id=7315",neutral:false,tourney:""},
+  {date:"Apr 18",day:"Sat",time:"12:00pm",opp:"at Clarkson University",loc:"Potsdam, NY",home:false,conf:true,result:"",score:"",watch:"https://clarksonathletics.com/sports/2018/5/5/clarkson-baseball-from-jack-phillips-stadium.aspx?id=7315",neutral:false,tourney:""},
+  {date:"Apr 18",day:"Sat",time:"3:00pm",opp:"at Clarkson University",loc:"Potsdam, NY",home:false,conf:true,result:"",score:"",watch:"https://clarksonathletics.com/sports/2018/5/5/clarkson-baseball-from-jack-phillips-stadium.aspx?id=7315",neutral:false,tourney:""},
+  {date:"Apr 21",day:"Tue",time:"2:00pm",opp:"at Hamilton College",loc:"Clinton, NY",home:false,conf:false,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Apr 21",day:"Tue",time:"4:30pm",opp:"at Hamilton College",loc:"Clinton, NY",home:false,conf:false,result:"",score:"",watch:"",neutral:false,tourney:""},
+  {date:"Apr 24",day:"Fri",time:"4:00pm",opp:"at RIT",loc:"Henrietta, NY",home:false,conf:true,result:"",score:"",watch:"https://ritathletics.com/watch/?Live=1849&type=Live",neutral:false,tourney:""},
+  {date:"Apr 25",day:"Sat",time:"12:00pm",opp:"RIT",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4b9xSpt",neutral:false,tourney:""},
+  {date:"Apr 25",day:"Sat",time:"3:00pm",opp:"RIT",loc:"Towers Field, Rochester NY",home:true,conf:true,result:"",score:"",watch:"https://flosports.link/4b9xSpt",neutral:false,tourney:""}
+];
+
+var ROSTER=[
+  {num:1,name:"Teddy Monahan",pos:"OF",yr:"Jr",bt:"L/L",ht:"5-11",town:"Orchard Park, NY",school:"Orchard Park HS"},
+  {num:2,name:"Sam Loeb",pos:"P",yr:"Sr",bt:"R/R",ht:"6-2",town:"Scarsdale, NY",school:"Scarsdale HS"},
+  {num:4,name:"Benjamin Garber",pos:"OF",yr:"So",bt:"L/L",ht:"5-10",town:"Westfield, NJ",school:"Westfield HS"},
+  {num:5,name:"Logan Mathias",pos:"C",yr:"Jr",bt:"R/R",ht:"6-0",town:"Orland Park, IL",school:"Carl Sandburg HS"},
+  {num:6,name:"Aidan Watts",pos:"P",yr:"Fr",bt:"R/R",ht:"6-3",town:"",school:""},
+  {num:7,name:"Sunil Lindsay",pos:"P",yr:"Jr",bt:"R/R",ht:"6-1",town:"",school:""},
+  {num:8,name:"Daniel Gudin",pos:"P",yr:"Fr",bt:"L/L",ht:"6-0",town:"",school:""},
+  {num:9,name:"Jake Del Vecchio",pos:"P",yr:"So",bt:"R/R",ht:"6-0",town:"",school:""},
+  {num:10,name:"Zach Herzog",pos:"P",yr:"Sr",bt:"R/R",ht:"6-2",town:"Woodbridge, CT",school:"Amity Regional HS"},
+  {num:11,name:"Jake Goldberg",pos:"OF",yr:"Jr",bt:"R/R",ht:"5-11",town:"",school:""},
+  {num:12,name:"Carlos Barajas",pos:"2B",yr:"Sr",bt:"R/R",ht:"5-9",town:"Nutley, NJ",school:"Nutley HS"},
+  {num:13,name:"Sammy Besztery",pos:"SS",yr:"Jr",bt:"R/R",ht:"6-0",town:"Westfield, NJ",school:"Westfield HS"},
+  {num:14,name:"Luke Blozy",pos:"C",yr:"So",bt:"R/R",ht:"6-1",town:"",school:""},
+  {num:15,name:"Derek Llanes",pos:"P",yr:"Jr",bt:"R/R",ht:"6-3",town:"",school:""},
+  {num:16,name:"K. Carpenter-Holmes",pos:"P",yr:"Fr",bt:"L/L",ht:"6-1",town:"",school:""},
+  {num:17,name:"Ryan Arora",pos:"P",yr:"Jr",bt:"R/R",ht:"6-0",town:"",school:""},
+  {num:18,name:"Will Webster",pos:"3B",yr:"So",bt:"R/R",ht:"6-0",town:"Dover Plains, NY",school:"Dover HS"},
+  {num:19,name:"Grady Davis",pos:"OF",yr:"Fr",bt:"R/R",ht:"6-1",town:"",school:""},
+  {num:21,name:"Ryan Huckabone",pos:"SS",yr:"Jr",bt:"R/R",ht:"5-11",town:"Albany, NY",school:"Bethlehem HS"},
+  {num:22,name:"Ryan Balent",pos:"P",yr:"So",bt:"R/R",ht:"6-2",town:"",school:""},
+  {num:23,name:"Andrew Lenhard",pos:"P",yr:"Sr",bt:"R/R",ht:"6-3",town:"",school:""},
+  {num:24,name:"Brendan Ryan",pos:"P",yr:"Jr",bt:"R/R",ht:"6-2",town:"",school:""},
+  {num:25,name:"Randy Davis",pos:"1B",yr:"Fr",bt:"R/R",ht:"6-3",town:"",school:""},
+  {num:26,name:"Owen Andreatta",pos:"OF",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""},
+  {num:27,name:"Jake Bentivenga",pos:"1B",yr:"Sr",bt:"L/L",ht:"6-1",town:"Bethpage, NY",school:"Bethpage HS"},
+  {num:28,name:"N. Carpenter-Holmes",pos:"UT",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""},
+  {num:30,name:"Christopher Trucano",pos:"P",yr:"So",bt:"R/R",ht:"6-1",town:"",school:""},
+  {num:31,name:"Spencer Guido",pos:"P",yr:"Jr",bt:"R/R",ht:"6-2",town:"",school:""},
+  {num:32,name:"Tristan Datta",pos:"OF",yr:"So",bt:"R/R",ht:"5-10",town:"",school:""},
+  {num:33,name:"James Nelson",pos:"P",yr:"So",bt:"R/R",ht:"6-3",town:"",school:""},
+  {num:34,name:"Theo Beckley",pos:"P",yr:"Fr",bt:"R/R",ht:"6-2",town:"",school:""},
+  {num:44,name:"George Farley IV",pos:"OF",yr:"Jr",bt:"R/R",ht:"6-1",town:"Hopkinton, MA",school:"Hopkinton HS"},
+  {num:45,name:"Declan Jack",pos:"C",yr:"Fr",bt:"R/R",ht:"6-0",town:"",school:""}
+];
+
+function initSchedule(){
+  var today=new Date();
+  var html="";
+  var lastDate="";
+  var wins=0,losses=0;
+  SCHEDULE.forEach(function(g,i){
+    var hasResult=g.result!=="";
+    if(hasResult){if(g.result==="W")wins++;else losses++;}
+    var isToday=!hasResult;
+    var rowBg=hasResult?(g.result==="W"?"rgba(46,204,113,0.05)":"rgba(224,82,82,0.05)"):"";
+    var confBadge=g.conf?'<span style="font-size:8px;background:rgba(78,205,196,0.15);color:var(--teal);border:1px solid rgba(78,205,196,0.3);padding:1px 5px;border-radius:2px;margin-left:4px;font-family:Oswald,sans-serif;letter-spacing:1px;">LL</span>':"";
+    var homeBadge=g.home?'<span style="font-size:8px;background:var(--gp);color:var(--gold);border:1px solid rgba(245,200,66,0.25);padding:1px 5px;border-radius:2px;margin-left:4px;font-family:Oswald,sans-serif;letter-spacing:1px;">HOME</span>':"";
+    var resultHtml="";
+    if(hasResult){
+      var rc=g.result==="W"?"var(--green)":"var(--red)";
+      resultHtml='<span style="font-family:Oswald,sans-serif;font-size:14px;font-weight:700;color:'+rc+'">'+g.result+'</span> <span style="font-family:Oswald,sans-serif;font-size:13px;color:var(--tp)">'+g.score+'</span>';
+    }else{
+      resultHtml='<span style="font-size:10px;color:var(--tm)">'+g.time+'</span>';
+    }
+    var watchHtml="";
+    if(g.watch&&!hasResult){
+      watchHtml='<a href="'+g.watch+'" target="_blank" style="font-family:Oswald,sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;background:var(--gold);color:var(--navy);padding:3px 8px;border-radius:2px;text-decoration:none;white-space:nowrap;">Watch</a>';
+    }else if(g.watch&&hasResult){
+      watchHtml='<a href="'+g.watch+'" target="_blank" style="font-family:Oswald,sans-serif;font-size:9px;color:var(--tm);text-decoration:none;border:1px solid rgba(255,255,255,0.1);padding:3px 8px;border-radius:2px;">Replay</a>';
+    }
+    var tourneyHtml=g.tourney?'<div style="font-size:9px;color:var(--gold);letter-spacing:1px;margin-bottom:2px;font-family:Oswald,sans-serif;">'+g.tourney+'</div>':"";
+    html+='<div style="display:grid;grid-template-columns:80px 1fr 140px 80px;align-items:center;padding:9px 14px;border-bottom:1px solid rgba(255,255,255,0.03);background:'+rowBg+';gap:8px;">'
+      +'<div>'
+        +'<div style="font-family:Oswald,sans-serif;font-size:12px;font-weight:600;color:var(--tp)">'+g.date+'</div>'
+        +'<div style="font-size:9px;color:var(--tm)">'+g.day+'</div>'
+      +'</div>'
+      +'<div>'
+        +tourneyHtml
+        +'<div style="font-family:Oswald,sans-serif;font-size:13px;font-weight:500;color:var(--tp)">'+g.opp+confBadge+homeBadge+'</div>'
+        +'<div style="font-size:10px;color:var(--tm);margin-top:2px;">'+g.loc+'</div>'
+      +'</div>'
+      +'<div>'+resultHtml+'</div>'
+      +'<div style="text-align:right">'+watchHtml+'</div>'
+    +'</div>';
+  });
+  var header='<div style="display:grid;grid-template-columns:80px 1fr 140px 80px;padding:7px 14px;background:var(--nl);border-bottom:2px solid var(--gold);gap:8px;">'
+    +'<div style="font-family:Oswald,sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Date</div>'
+    +'<div style="font-family:Oswald,sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Opponent</div>'
+    +'<div style="font-family:Oswald,sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;">Result</div>'
+    +'<div style="font-family:Oswald,sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;text-align:right;">Stream</div>'
+    +'</div>';
+  document.getElementById("schedule-table").innerHTML=header+html;
+}
+
+function initRosterPage(){
+  function renderRoster(data){
+    document.querySelector("#roster-tbl tbody").innerHTML=data.map(function(p){
+      return '<tr>'
+        +'<td style="color:var(--gold);font-family:Oswald,sans-serif;font-weight:700;">'+p.num+'</td>'
+        +'<td style="font-weight:600;">'+p.name+'</td>'
+        +'<td><span style="font-family:Oswald,sans-serif;font-size:10px;background:rgba(245,200,66,0.1);color:var(--gold);border:1px solid rgba(245,200,66,0.2);padding:2px 6px;border-radius:2px;">'+p.pos+'</span></td>'
+        +'<td>'+p.yr+'</td>'
+        +'<td style="color:var(--tm)">'+p.bt+'</td>'
+        +'<td style="color:var(--tm)">'+p.ht+'</td>'
+        +'<td>'+p.town+'</td>'
+        +'<td style="color:var(--tm)">'+p.school+'</td>'
+      +'</tr>';
+    }).join("");
+  }
+  renderRoster(ROSTER);
+  document.getElementById("roster-search").addEventListener("input",function(e){
+    var q=e.target.value.toLowerCase();
+    var pos=document.getElementById("roster-pos-filter").value;
+    renderRoster(ROSTER.filter(function(p){
+      var matchQ=!q||p.name.toLowerCase().indexOf(q)>=0||p.pos.toLowerCase().indexOf(q)>=0||p.yr.toLowerCase().indexOf(q)>=0||p.town.toLowerCase().indexOf(q)>=0;
+      var matchPos=!pos||p.pos===pos||p.pos.indexOf(pos)>=0;
+      return matchQ&&matchPos;
+    }));
+  });
+  document.getElementById("roster-pos-filter").addEventListener("change",function(){
+    document.getElementById("roster-search").dispatchEvent(new Event("input"));
+  });
+}
+
+/* ══ NAV ══ */
 document.querySelectorAll(".nt").forEach(function(t){t.addEventListener("click",function(){document.querySelectorAll(".nt").forEach(function(x){x.classList.remove("on");});document.querySelectorAll(".pg").forEach(function(x){x.classList.remove("on");});t.classList.add("on");document.getElementById("page-"+t.dataset.page).classList.add("on");});});
 document.querySelectorAll("#ldr-filter .fb").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll("#ldr-filter .fb").forEach(function(x){x.classList.remove("on");});b.classList.add("on");renderLeaders(b.dataset.stat);});});
 
-/* TICKER */
-document.getElementById("ticker-text").textContent=["ROC 7-3 OVERALL · .330 AVG · 6.16 ERA","4th BATTING · 6th ERA IN LIBERTY LEAGUE","GEORGE FARLEY IV team-high 2 HR","BENJAMIN GARBER leads ROC 13 runs","ZACH HERZOG 1.64 ERA · 8 SO","SAM LOEB team-high 3 SV","LEAGUE AVG LEADER: ZACH RIDER (CLARKSON) .571","LEAGUE ERA LEADER: CJ KANICK (CLARKSON) 0.00","SKIDMORE leads Liberty League 8-2"].join("   ·   ");
+/* ══ TICKER ══ */
+document.getElementById("ticker-text").textContent=["ROC 7-3 OVERALL &middot; .330 AVG &middot; 6.16 ERA","4th BATTING &middot; 6th ERA IN LIBERTY LEAGUE","GEORGE FARLEY IV 2 HR &middot; LEADING ROC","WILL WEBSTER .348 AVG &middot; .400 OBP","ZACH HERZOG 1.64 ERA &middot; ACE OF THE STAFF","SAM LOEB TEAM-HIGH 3 SAVES","JAKE DEL VECCHIO 2 SV &middot; 0.00 ERA","LEAGUE AVG LEADER: ZACH RIDER (CLARKSON) .571","SKIDMORE leads Liberty League 8-2"].join("   &middot;   ");
 
-/* INIT */
+/* ══ INIT ══ */
 document.addEventListener("DOMContentLoaded",function(){
-  initOverview();initBatting();initPitching();initGameLog();initConference();renderLeaders("avg");initCards();
+  initDash();initSchedule();initRosterPage();initBatting();initPitching();initGameLog();initConference();renderLeaders("avg");initCards();initCoach();
 });
 </script>
 </body>
