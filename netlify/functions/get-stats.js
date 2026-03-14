@@ -1,9 +1,17 @@
 const { getStore } = require("@netlify/blobs");
 
-exports.handler = async (event) => {
+exports.handler = async (event, context) => {
   try {
-    const store = getStore("baseball-stats");
+    const token = process.env.NETLIFY_AUTH_TOKEN;
+    const siteID = process.env.NETLIFY_SITE_ID;
+
+    const storeOpts = (token && siteID)
+      ? { name: "baseball-stats", token, siteID }
+      : "baseball-stats";
+
+    const store = getStore(storeOpts);
     const data = await store.get("stats", { type: "json" });
+
     if (!data) {
       return {
         statusCode: 404,
@@ -28,4 +36,3 @@ exports.handler = async (event) => {
     };
   }
 };
-
