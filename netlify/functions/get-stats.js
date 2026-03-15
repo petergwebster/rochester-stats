@@ -10,12 +10,18 @@ exports.handler = async (event, context) => {
       : "baseball-stats";
 
     const store = getStore(storeOpts);
-    const data = await store.get("stats", { type: "json" });
+
+    // Force fresh read - no cache
+    const data = await store.get("stats", { type: "json", consistency: "strong" });
 
     if (!data) {
       return {
         statusCode: 404,
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Cache-Control": "no-store"
+        },
         body: JSON.stringify({ error: "No data yet. Run scraper first." })
       };
     }
@@ -24,14 +30,18 @@ exports.handler = async (event, context) => {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "public, max-age=1800"
+        "Cache-Control": "no-store"
       },
       body: JSON.stringify(data)
     };
   } catch (err) {
     return {
       statusCode: 500,
-      headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-store"
+      },
       body: JSON.stringify({ error: err.message })
     };
   }
