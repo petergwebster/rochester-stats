@@ -467,7 +467,7 @@ async function loadLiveData(){
     if(d.error) throw new Error(d.error);
 
     LAST_UPDATED=d.lastUpdated?new Date(d.lastUpdated).toLocaleString():"unknown";
-    if(stamp) stamp.textContent="Live data · Updated: "+LAST_UPDATED;stamp.style.color="var(--green)";
+    if(stamp){stamp.textContent="Live data · Updated: "+LAST_UPDATED;stamp.style.color="var(--green)";}
 
     if(d.roc){
       ROC_H=d.roc.hitters||[];
