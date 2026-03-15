@@ -461,7 +461,7 @@ var LAST_UPDATED="";
 async function loadLiveData(){
   var stamp=document.getElementById("last-updated");
   try {
-    var res=await fetch("/.netlify/functions/get-stats");
+    var res=await fetch("/.netlify/functions/get-stats?t="+Date.now());
     if(!res.ok) throw new Error("HTTP "+res.status);
     var d=await res.json();
     if(d.error) throw new Error(d.error);
