@@ -21,17 +21,15 @@ function strip(s) {
   return s.replace(/<[^>]+>/g,"").replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/&#\d+;/g,"").trim();
 }
 
-// Extract all tables from HTML as arrays of row arrays
 function getAllTables(html) {
   const tables = [];
   const tableRx = /<table[^>]*>([\s\S]*?)<\/table>/gi;
-  const rowRx = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
   let tm;
   while ((tm = tableRx.exec(html)) !== null) {
     const rows = [];
+    const rowRx = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
     let rm;
-    const rowRx2 = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
-    while ((rm = rowRx2.exec(tm[1])) !== null) {
+    while ((rm = rowRx.exec(tm[1])) !== null) {
       const cells = [];
       const cr = /<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi;
       let cm;
@@ -43,18 +41,13 @@ function getAllTables(html) {
   return tables;
 }
 
-// Find a table that contains a specific header keyword
 function findTable(tables, keyword) {
-  return tables.find(t =>
-    t[0] && t[0].some(cell => cell.toLowerCase().includes(keyword.toLowerCase()))
-  );
+  return tables.find(t => t[0] && t[0].some(cell => cell.toLowerCase().includes(keyword.toLowerCase())));
 }
 
 async function scrapeLL() {
   const html = await fetchHTML(LL_URL);
   const tables = getAllTables(html);
-
-  // Team batting: has "AVG" and "Team" headers
   const batTbl = findTable(tables, "AVG") || tables[0];
   const teams = (batTbl ? batTbl.slice(1) : []).filter(r => r[1] && r[1].trim() && r[1] !== "Team").map(r => ({
     team: r[1].replace(/[^\w\s.]/g,"").trim(),
@@ -66,7 +59,6 @@ async function scrapeLL() {
     era: 0, wl: "0-0"
   })).filter(t => t.team && t.avg > 0);
 
-  // Team pitching: has "ERA" header
   const pitTbl = findTable(tables, "ERA");
   if (pitTbl) {
     pitTbl.slice(1).forEach(r => {
@@ -76,10 +68,7 @@ async function scrapeLL() {
     });
   }
 
-  // Individual hitters: look for table with player names containing "("
-  const indHitTbl = tables.find(t =>
-    t.slice(1).some(r => r[1] && r[1].includes("("))
-  );
+  const indHitTbl = tables.find(t => t.slice(1).some(r => r[1] && r[1].includes("(")));
   const hitters = indHitTbl ? indHitTbl.slice(1).filter(r => r[1] && r[1].includes("(")).map(r => {
     const p = r[1].split("(");
     return { name: p[0].trim(), team: p[1] ? p[1].replace(")","").trim() : "",
@@ -91,7 +80,6 @@ async function scrapeLL() {
       obp: safeNum(r[18]), sb: r[21]||"0-0" };
   }) : [];
 
-  // Individual pitchers: find table with ERA column and player names with "("
   const indPitTbl = tables.find(t =>
     t[0] && t[0].some(c => c.toLowerCase() === "era") &&
     t.slice(1).some(r => r[1] && r[1].includes("("))
@@ -112,18 +100,14 @@ async function scrapeLL() {
 async function scrapeROC() {
   const html = await fetchHTML(ROC_URL);
   const tables = getAllTables(html);
-
   const recMatch = html.match(/Record:\s*([\d]+-[\d]+)/);
   const record = recMatch ? recMatch[1] : "0-0";
 
-  // Find batting table: has "avg" header and player links
   const batTbl = tables.find(t =>
-    t[0] && t[0].some(c => c.toLowerCase() === "avg") &&
-    t.length > 5
+    t[0] && t[0].some(c => c.toLowerCase() === "avg") && t.length > 5
   );
-
   const hitters = batTbl ? batTbl.slice(1)
-    .filter(r => r[0] && r[0] !== "Totals" && r[0] !== "Opponents" && r[0] !== "Player" && safeNum(r[3]) >= 0)
+    .filter(r => r[0] && r[0] !== "Totals" && r[0] !== "Opponents" && r[0] !== "Player")
     .map(r => ({
       name: r[0], avg: safeNum(r[1]), gp: r[2]||"0-0",
       ab: safeNum(r[3]), r: safeNum(r[4]), h: safeNum(r[5]),
@@ -135,12 +119,9 @@ async function scrapeROC() {
       po: safeNum(r[20]), a: safeNum(r[21]), e: safeNum(r[22]), fld: safeNum(r[23])
     })).filter(p => p.name && p.name.length > 2) : [];
 
-  // Find pitching table: has "era" header
   const pitTbl = tables.find(t =>
-    t[0] && t[0].some(c => c.toLowerCase() === "era") &&
-    t.length > 3
+    t[0] && t[0].some(c => c.toLowerCase() === "era") && t.length > 3
   );
-
   const pitchers = pitTbl ? pitTbl.slice(1)
     .filter(r => r[0] && r[0] !== "Totals" && r[0] !== "Opponents" && r[0] !== "Player")
     .map(r => ({
@@ -153,53 +134,35 @@ async function scrapeROC() {
       bavg: safeNum(r[17]), wp: safeNum(r[18]), hbp: safeNum(r[19]), bk: safeNum(r[20])
     })).filter(p => p.name && p.name.length > 2) : [];
 
-  // Inning by inning
-  const innMatch = html.match(/Rochester[^|]*?(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
-  const oppMatch = html.match(/Opponents[^|]*?(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
-
-  return {
-    record, hitters, pitchers,
-    innings: {
-      roc: innMatch ? innMatch.slice(1,10).map(Number) : [],
-      opp: oppMatch ? oppMatch.slice(1,10).map(Number) : []
-    }
-  };
+  return { record, hitters, pitchers, innings: { roc: [], opp: [] } };
 }
 
 exports.handler = async (event, context) => {
   try {
     const token = process.env.NETLIFY_AUTH_TOKEN;
     const siteID = process.env.NETLIFY_SITE_ID;
-
-    console.log("Scraper starting. Token:", !!token, "SiteID:", !!siteID);
+    const storeOpts = (token && siteID) ? { name: "baseball-stats", token, siteID } : "baseball-stats";
 
     const [ll, roc] = await Promise.all([scrapeLL(), scrapeROC()]);
-
+    const now = new Date().toISOString();
     const data = {
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: now,
       roc: { record: roc.record, hitters: roc.hitters, pitchers: roc.pitchers, innings: roc.innings },
       ll: { teams: ll.teams, hitters: ll.hitters, pitchers: ll.pitchers }
     };
 
-    const storeOpts = (token && siteID)
-      ? { name: "baseball-stats", token, siteID }
-      : "baseball-stats";
-
     const store = getStore(storeOpts);
-    await store.setJSON("stats", data);
 
-    console.log("Done. ROC hitters:", roc.hitters.length, "LL teams:", ll.teams.length, "LL hitters:", ll.hitters.length);
+    // Write to TWO keys: "stats" (main) and "stats-v{timestamp}" (versioned)
+    // get-stats will read the versioned pointer to always get fresh data
+    await store.setJSON("stats", data);
+    await store.setJSON("latest-timestamp", { ts: now });
+
+    console.log("Saved. ROC hitters:", roc.hitters.length, "LL teams:", ll.teams.length);
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ok: true,
-        lastUpdated: data.lastUpdated,
-        rocHitters: roc.hitters.length,
-        rocPitchers: roc.pitchers.length,
-        llTeams: ll.teams.length,
-        llHitters: ll.hitters.length
-      })
+      body: JSON.stringify({ ok: true, lastUpdated: now, rocHitters: roc.hitters.length, llTeams: ll.teams.length })
     };
   } catch (err) {
     console.error("Scrape failed:", err.message);
