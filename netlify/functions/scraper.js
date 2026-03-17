@@ -1,3 +1,4 @@
+const { schedule } = require("@netlify/functions");
 const { getStore } = require("@netlify/blobs");
 
 const LL_URL = "https://libertyleagueathletics.com/stats.aspx?path=baseball&year=2026";
@@ -137,39 +138,62 @@ async function scrapeROC() {
   return { record, hitters, pitchers, innings: { roc: [], opp: [] } };
 }
 
-exports.handler = async (event, context) => {
+async function runScraper() {
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const storeOpts = (token && siteID) ? { name: "baseball-stats", token, siteID } : "baseball-stats";
+
+  const [ll, roc] = await Promise.all([scrapeLL(), scrapeROC()]);
+  const now = new Date().toISOString();
+  const data = {
+    lastUpdated: now,
+    roc: { record: roc.record, hitters: roc.hitters, pitchers: roc.pitchers, innings: roc.innings },
+    ll: { teams: ll.teams, hitters: ll.hitters, pitchers: ll.pitchers }
+  };
+
+  const store = getStore(storeOpts);
+  await store.setJSON("stats", data);
+  await store.setJSON("latest-timestamp", { ts: now });
+
+  console.log("Scrape complete. ROC hitters:", roc.hitters.length, "LL teams:", ll.teams.length);
+  return { ok: true, lastUpdated: now, rocHitters: roc.hitters.length, llTeams: ll.teams.length };
+}
+
+// Use schedule() wrapper so Netlify registers this as a scheduled function
+const scheduledHandler = schedule("*/15 * * * *", async (event) => {
   try {
-    const token = process.env.NETLIFY_AUTH_TOKEN;
-    const siteID = process.env.NETLIFY_SITE_ID;
-    const storeOpts = (token && siteID) ? { name: "baseball-stats", token, siteID } : "baseball-stats";
+    const result = await runScraper();
+    return { statusCode: 200, body: JSON.stringify(result) };
+  } catch (err) {
+    console.error("Scheduled scrape failed:", err.message);
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+  }
+});
 
-    const [ll, roc] = await Promise.all([scrapeLL(), scrapeROC()]);
-    const now = new Date().toISOString();
-    const data = {
-      lastUpdated: now,
-      roc: { record: roc.record, hitters: roc.hitters, pitchers: roc.pitchers, innings: roc.innings },
-      ll: { teams: ll.teams, hitters: ll.hitters, pitchers: ll.pitchers }
-    };
-
-    const store = getStore(storeOpts);
-
-    // Write to TWO keys: "stats" (main) and "stats-v{timestamp}" (versioned)
-    // get-stats will read the versioned pointer to always get fresh data
-    await store.setJSON("stats", data);
-    await store.setJSON("latest-timestamp", { ts: now });
-
-    console.log("Saved. ROC hitters:", roc.hitters.length, "LL teams:", ll.teams.length);
+// Also export as regular handler so it can be triggered manually via URL
+const manualHandler = async (event) => {
+  try {
+    const result = await runScraper();
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ok: true, lastUpdated: now, rocHitters: roc.hitters.length, llTeams: ll.teams.length })
+      body: JSON.stringify(result)
     };
   } catch (err) {
-    console.error("Scrape failed:", err.message);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ error: err.message })
     };
   }
+};
+
+// Export both - schedule wrapper for cron, manual for URL trigger
+module.exports.handler = async (event, context) => {
+  // If triggered by scheduler, use scheduled handler
+  if (event.body && JSON.parse(event.body || "{}").next_run) {
+    return scheduledHandler(event, context);
+  }
+  // Otherwise manual trigger
+  return manualHandler(event);
 };
