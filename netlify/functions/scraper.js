@@ -159,8 +159,8 @@ async function runScraper() {
   return { ok: true, lastUpdated: now, rocHitters: roc.hitters.length, llTeams: ll.teams.length };
 }
 
-// Use schedule() wrapper so Netlify registers this as a scheduled function
-const scheduledHandler = schedule("*/15 * * * *", async (event) => {
+// This is the correct way to export a scheduled function for Netlify
+module.exports.handler = schedule("*/15 * * * *", async (event) => {
   try {
     const result = await runScraper();
     return { statusCode: 200, body: JSON.stringify(result) };
@@ -169,31 +169,3 @@ const scheduledHandler = schedule("*/15 * * * *", async (event) => {
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 });
-
-// Also export as regular handler so it can be triggered manually via URL
-const manualHandler = async (event) => {
-  try {
-    const result = await runScraper();
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(result)
-    };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ error: err.message })
-    };
-  }
-};
-
-// Export both - schedule wrapper for cron, manual for URL trigger
-module.exports.handler = async (event, context) => {
-  // If triggered by scheduler, use scheduled handler
-  if (event.body && JSON.parse(event.body || "{}").next_run) {
-    return scheduledHandler(event, context);
-  }
-  // Otherwise manual trigger
-  return manualHandler(event);
-};
