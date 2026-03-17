@@ -2,9 +2,8 @@
   publish = "."
   functions = "netlify/functions"
 
-[[scheduled-functions]]
-  name = "scraper"
-  schedule = "*/15 * * * *"
+[functions]
+  node_bundler = "esbuild"
 
 [[headers]]
   for = "/*"
